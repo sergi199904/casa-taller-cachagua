@@ -1,0 +1,206 @@
+/* Main CSS file */
+:root {
+    --primary-color: #8b5e34;
+    --secondary-color: #c9a66b;
+    --accent-color: #e3b04b;
+    --dark-color: #2c2c2c;
+    --light-color: #f8f9fa;
+    --text-color: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Utility Classes */
+.bg-primary-custom {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary-custom {
+    background-color: var(--secondary-color);
+}
+
+.text-primary-custom {
+    color: var(--primary-color);
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background-color: #7b512c;
+    border-color: #7b512c;
+}
+
+.btn-outline-primary-custom {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary-custom:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Header & Navigation */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    max-height: 60px;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin: 0 8px;
+    position: relative;
+}
+
+.nav-link.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.social-icon {
+    color: var(--dark-color);
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    position: relative;
+    color: white;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Product Cards */
+.product-card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Categories */
+.category-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    margin: 0 5px 10px 0;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.category-pill.active, .category-pill:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Testimonials */
+.testimonial-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.testimonial-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 30px;
+}
+
+/* About Section */
+.about-image {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .hero {
+        min-height: 400px;
+    }
+    
+    .navbar-brand img {
+        max-height: 45px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Lazy Loading */
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+}
