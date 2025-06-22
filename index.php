@@ -1,3 +1,4 @@
+
 <?php
 require_once 'config/config.php';
 require_once 'config/database.php';
@@ -55,7 +56,7 @@ require_once 'includes/functions.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/banners/banner1.jpg" class="d-block w-100" alt="Nueva Colección">
+                    <img src="img\banners\Banner 1.webp" class="d-block w-100" alt="Nueva Colección">
                     <div class="carousel-caption">
                         <h2>Nueva Colección</h2>
                         <p>Descubre nuestras últimas creaciones artesanales</p>
@@ -101,22 +102,19 @@ require_once 'includes/functions.php';
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="img/general/pareja-ceramica.jpg" class="d-block w-100" alt="Casa Taller Cachagua">
+                                <img src="img\general\Parte de Nosotros 1.webp" class="d-block w-100" alt="Casa Taller Cachagua">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/general/taller2.jpg" class="d-block w-100" alt="Taller">
+                                <img src="img\general\Parte de Nosotros 2.jpg" class="d-block w-100" alt="Taller">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/general/taller3.jpg" class="d-block w-100" alt="Creaciones">
+                                <img src="img\general\Parte de Nosotros 3.jpg" class="d-block w-100" alt="Creaciones">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/general/taller4.jpg" class="d-block w-100" alt="Arte">
+                                <img src="img\general\Parte de Nosotros 4.jpg" class="d-block w-100" alt="Arte">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/general/taller5.jpg" class="d-block w-100" alt="Proceso">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/general/taller6.jpg" class="d-block w-100" alt="Artesanía">
+                                <img src="img\general\Parte de Nosotros 5.jpg" class="d-block w-100" alt="Proceso">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselNosotros" data-bs-slide="prev">

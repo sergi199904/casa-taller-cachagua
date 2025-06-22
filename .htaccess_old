@@ -1,0 +1,14 @@
+# Proteger archivos sensibles
+<FilesMatch "\.(sql|log|ini)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevenir listado de directorios
+Options -Indexes
+
+# Proteger carpeta config
+<Directory "config">
+    Order allow,deny
+    Deny from all
+</Directory>
