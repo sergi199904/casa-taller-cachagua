@@ -1,0 +1,148 @@
+/* admin.css - Estilos del Panel de Administración */
+
+/* Variables */
+:root {
+    --admin-primary: #2c3e50;
+    --admin-secondary: #34495e;
+    --admin-success: #27ae60;
+    --admin-warning: #f39c12;
+    --admin-danger: #e74c3c;
+    --admin-info: #3498db;
+}
+
+/* Estilos generales */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar personalizado */
+.navbar-dark {
+    background-color: var(--admin-primary) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Cards del dashboard */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Tarjetas de estadísticas */
+.bg-primary { background-color: var(--admin-info) !important; }
+.bg-success { background-color: var(--admin-success) !important; }
+.bg-warning { background-color: var(--admin-warning) !important; }
+.bg-danger { background-color: var(--admin-danger) !important; }
+
+.card-footer {
+    background-color: rgba(0,0,0,0.1);
+    border-top: none;
+}
+
+/* Formularios */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--admin-info);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Tablas */
+.table {
+    background-color: white;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+/* Botones personalizados */
+.btn {
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: var(--admin-info);
+    border-color: var(--admin-info);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Login page */
+.min-vh-100 {
+    min-height: 100vh !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-nav {
+        padding: 10px 0;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .table {
+        font-size: 0.875rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Imagen de producto en tabla */
+.table img {
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Estados de hover para iconos */
+.fa-instagram:hover {
+    color: #E1306C;
+}
+
+.fa-edit:hover {
+    color: var(--admin-warning);
+}
+
+.fa-trash:hover {
+    color: var(--admin-danger);
+}
