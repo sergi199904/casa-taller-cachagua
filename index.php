@@ -1,4 +1,5 @@
 <?php
+require_once 'config/config.php';
 require_once 'config/database.php';
 require_once 'includes/functions.php';
 ?>
@@ -9,6 +10,14 @@ require_once 'includes/functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa Taller Cachagua - Arte & Artesanía</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Casa Taller Cachagua - Arte y artesanía única en cerámica, pinturas, grabados y esculturas. Visítanos en Cachagua, Valparaíso.">
+    <meta name="keywords" content="arte, artesanía, cerámica, cachagua, taller, pinturas, grabados">
+    <meta property="og:title" content="Casa Taller Cachagua">
+    <meta property="og:description" content="Arte y artesanía con amor desde Cachagua">
+    <meta property="og:image" content="img/general/og-image.jpg">
+    <meta property="og:url" content="https://casatallercachagua.cl">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -18,9 +27,9 @@ require_once 'includes/functions.php';
 </head>
 <body>
     <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">Casa Taller Cachagua</a>
+            <a class="navbar-brand" href="#home">Casa Taller Cachagua</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,7 +55,7 @@ require_once 'includes/functions.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img\banners\Banner 1.webp" class="d-block w-100" alt="Nueva Colección">
+                    <img src="img/banners/banner1.jpg" class="d-block w-100" alt="Nueva Colección">
                     <div class="carousel-caption">
                         <h2>Nueva Colección</h2>
                         <p>Descubre nuestras últimas creaciones artesanales</p>
@@ -76,58 +85,61 @@ require_once 'includes/functions.php';
         </div>
     </section>
 
-<!-- Sección Nosotros -->
-<section id="nosotros" class="py-5 bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4">
-                <div id="carouselNosotros" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="3"></button>
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="4"></button>
-                        <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="5"></button>
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div id="carouselNosotros" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="4"></button>
+                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="5"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/general/pareja-ceramica.jpg" class="d-block w-100" alt="Casa Taller Cachagua">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/general/taller2.jpg" class="d-block w-100" alt="Taller">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/general/taller3.jpg" class="d-block w-100" alt="Creaciones">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/general/taller4.jpg" class="d-block w-100" alt="Arte">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/general/taller5.jpg" class="d-block w-100" alt="Proceso">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/general/taller6.jpg" class="d-block w-100" alt="Artesanía">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselNosotros" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselNosotros" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img\general\Parte de Nosotros 1.webp" class="d-block w-100 rounded" alt="Casa Taller Cachagua">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img\general\Parte de Nosotros 2.jpg" class="d-block w-100 rounded" alt="Taller">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img\general\Parte de Nosotros 3.jpg" class="d-block w-100 rounded" alt="Creaciones">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img\general\Parte de Nosotros 4.jpg" class="d-block w-100 rounded" alt="Arte">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img\general\Parte de Nosotros 5.jpg" class="d-block w-100 rounded" alt="Proceso">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselNosotros" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselNosotros" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <h2 class="mb-4 text-burgundy">¿Quienes somos?</h2>
-                <div class="nosotros-text">
-                    <p>Somos una pareja que vive en el tranquilo y hermoso pueblo de Cachagua, un lugar que inspira cada rincón de nuestro día a día. Aquí, entre la calma del paisaje y la rica tradición cultural, hemos encontrado un espacio para crear y compartir nuestra pasión por el arte.</p>
-                    <p>Nos encantaría abrir las puertas de nuestro hogar para recibirte, mostrarte el arte que nace aquí y compartir momentos únicos contigo. Ya sea que vengas por curiosidad, para explorar nuevas ideas o simplemente para disfrutar del arte, siempre serás bienvenido en este espacio lleno de creatividad y amor.</p>
+                <div class="col-lg-7 ps-lg-5">
+                    <h2>¿Quienes somos?</h2>
+                    <div class="nosotros-text">
+                        <p>Somos una pareja que vive en el tranquilo y hermoso pueblo de Cachagua, un lugar que inspira cada rincón de nuestro día a día. Aquí, entre la calma del paisaje y la rica tradición cultural, hemos encontrado un espacio para crear y compartir nuestra pasión por el arte.</p>
+                        <p>Nos encantaría abrir las puertas de nuestro hogar para recibirte, mostrarte el arte que nace aquí y compartir momentos únicos contigo. Ya sea que vengas por curiosidad, para explorar nuevas ideas o simplemente para disfrutar del arte, siempre serás bienvenido en este espacio lleno de creatividad y amor.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Galería de Productos -->
-    <section id="productos" class="py-5">
+    <section id="productos" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">Nuestros Productos</h2>
             
@@ -148,17 +160,17 @@ require_once 'includes/functions.php';
                 if ($result && $result->num_rows > 0) {
                     while ($producto = $result->fetch_assoc()) {
                         ?>
-                        <div class="col-md-4 col-sm-6 producto-item" data-categoria="<?php echo $producto['categoria']; ?>">
+                        <div class="col-md-4 col-sm-6 producto-item" data-categoria="<?php echo htmlspecialchars($producto['categoria']); ?>">
                             <div class="card h-100 shadow-sm producto-card">
                                 <div class="producto-img-wrapper">
-                                    <img src="img/productos/<?php echo $producto['imagen']; ?>" 
+                                    <img src="img/productos/<?php echo htmlspecialchars($producto['imagen']); ?>" 
                                          class="card-img-top producto-img" 
                                          alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
                                     <?php if ($producto['instagram_link']) { ?>
-                                        <a href="<?php echo $producto['instagram_link']; ?>" 
+                                        <a href="<?php echo htmlspecialchars($producto['instagram_link']); ?>" 
                                            target="_blank" 
                                            class="btn btn-sm btn-outline-primary">
                                             <i class="fab fa-instagram"></i> Ver en Instagram
@@ -178,7 +190,7 @@ require_once 'includes/functions.php';
     </section>
 
     <!-- Testimonios -->
-    <section class="py-5 bg-light">
+    <section class="py-5 testimonios-section">
         <div class="container">
             <h2 class="text-center mb-5">Lo que dicen nuestros clientes</h2>
             <div class="row">

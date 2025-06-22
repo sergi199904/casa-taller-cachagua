@@ -51,20 +51,43 @@ function format_date($date, $format = 'd/m/Y') {
 }
 
 /**
- * Subir imagen
+ * Validar imagen mejorada
+ */
+function validateImage($file) {
+    $allowed = ['image/jpeg', 'image/png', 'image/gif'];
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+    
+    return in_array($mime, $allowed);
+}
+
+/**
+ * Subir imagen mejorada
  */
 function upload_image($file, $directory = 'img/productos/') {
-    $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
-    $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    
-    if (!in_array($file_extension, $allowed_types)) {
+    // Validar tipo MIME real
+    if (!validateImage($file)) {
         return array('success' => false, 'message' => 'Tipo de archivo no permitido');
     }
     
-    $new_filename = uniqid() . '.' . $file_extension;
-    $upload_path = $directory . $new_filename;
+    // Validar tamaño
+    if ($file['size'] > MAX_FILE_SIZE) {
+        return array('success' => false, 'message' => 'El archivo es demasiado grande');
+    }
+    
+    $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $new_filename = uniqid() . '_' . time() . '.' . $file_extension;
+    $upload_path = '../' . $directory . $new_filename;
+    
+    // Crear directorio si no existe
+    if (!is_dir('../' . $directory)) {
+        mkdir('../' . $directory, 0777, true);
+    }
     
     if (move_uploaded_file($file['tmp_name'], $upload_path)) {
+        // Optimizar imagen si es necesario
+        optimizeImage($upload_path, $file_extension);
         return array('success' => true, 'filename' => $new_filename);
     } else {
         return array('success' => false, 'message' => 'Error al subir el archivo');
@@ -72,10 +95,66 @@ function upload_image($file, $directory = 'img/productos/') {
 }
 
 /**
+ * Optimizar imagen
+ */
+function optimizeImage($path, $extension) {
+    list($width, $height) = getimagesize($path);
+    
+    // Si la imagen es muy grande, redimensionar
+    if ($width > 1200 || $height > 1200) {
+        $maxDim = 1200;
+        $ratio = min($maxDim/$width, $maxDim/$height);
+        $newWidth = $width * $ratio;
+        $newHeight = $height * $ratio;
+        
+        switch($extension) {
+            case 'jpg':
+            case 'jpeg':
+                $src = imagecreatefromjpeg($path);
+                break;
+            case 'png':
+                $src = imagecreatefrompng($path);
+                break;
+            case 'gif':
+                $src = imagecreatefromgif($path);
+                break;
+            default:
+                return;
+        }
+        
+        $dst = imagecreatetruecolor($newWidth, $newHeight);
+        
+        // Preservar transparencia para PNG
+        if ($extension == 'png') {
+            imagealphablending($dst, false);
+            imagesavealpha($dst, true);
+        }
+        
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+        
+        switch($extension) {
+            case 'jpg':
+            case 'jpeg':
+                imagejpeg($dst, $path, 85);
+                break;
+            case 'png':
+                imagepng($dst, $path, 8);
+                break;
+            case 'gif':
+                imagegif($dst, $path);
+                break;
+        }
+        
+        imagedestroy($src);
+        imagedestroy($dst);
+    }
+}
+
+/**
  * Eliminar imagen
  */
 function delete_image($filename, $directory = 'img/productos/') {
-    $file_path = $directory . $filename;
+    $file_path = '../' . $directory . $filename;
     if (file_exists($file_path)) {
         return unlink($file_path);
     }
@@ -117,9 +196,10 @@ function limit_text($text, $limit = 100) {
 }
 
 /**
- * Validar email
+ * Validar email mejorado
  */
 function validate_email($email) {
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
@@ -143,51 +223,19 @@ function get_client_ip() {
 }
 
 /**
- * Crear miniatura de imagen
+ * Log de actividad
  */
-function create_thumbnail($source_path, $dest_path, $thumb_width = 300) {
-    $image_info = getimagesize($source_path);
-    $image_type = $image_info[2];
+function log_activity($action, $details = '') {
+    global $conexion;
     
-    switch($image_type) {
-        case IMAGETYPE_JPEG:
-            $source = imagecreatefromjpeg($source_path);
-            break;
-        case IMAGETYPE_PNG:
-            $source = imagecreatefrompng($source_path);
-            break;
-        case IMAGETYPE_GIF:
-            $source = imagecreatefromgif($source_path);
-            break;
-        default:
-            return false;
-    }
+    $user_id = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : 0;
+    $ip = get_client_ip();
+    $action = escape($action);
+    $details = escape($details);
     
-    $width = imagesx($source);
-    $height = imagesy($source);
+    $query = "INSERT INTO activity_log (user_id, action, details, ip_address) 
+              VALUES ('$user_id', '$action', '$details', '$ip')";
     
-    $thumb_height = floor($height * ($thumb_width / $width));
-    
-    $thumb = imagecreatetruecolor($thumb_width, $thumb_height);
-    
-    imagecopyresampled($thumb, $source, 0, 0, 0, 0, 
-                       $thumb_width, $thumb_height, $width, $height);
-    
-    switch($image_type) {
-        case IMAGETYPE_JPEG:
-            imagejpeg($thumb, $dest_path, 90);
-            break;
-        case IMAGETYPE_PNG:
-            imagepng($thumb, $dest_path);
-            break;
-        case IMAGETYPE_GIF:
-            imagegif($thumb, $dest_path);
-            break;
-    }
-    
-    imagedestroy($source);
-    imagedestroy($thumb);
-    
-    return true;
+    return mysqli_query($conexion, $query);
 }
 ?>

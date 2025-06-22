@@ -1,6 +1,9 @@
 <?php
 // config/database.php - Configuración de la base de datos
 
+// Incluir configuración general
+require_once 'config.php';
+
 // Configuración para XAMPP con MySQL en puerto 3307
 define('DB_HOST', 'localhost:3307');
 define('DB_USER', 'root');
@@ -12,12 +15,19 @@ $conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // Verificar conexión
 if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+    if (ENVIRONMENT == 'development') {
+        die("Error de conexión: " . $conexion->connect_error);
+    } else {
+        die("Error de conexión a la base de datos");
+    }
 }
 
 // Establecer charset para evitar problemas con caracteres especiales
-$conexion->set_charset("utf8");
+$conexion->set_charset("utf8mb4");
 
-// Opcional: Configurar zona horaria
-date_default_timezone_set('America/Santiago');
+// Función para escapar strings (prevenir SQL Injection)
+function escape($str) {
+    global $conexion;
+    return mysqli_real_escape_string($conexion, $str);
+}
 ?>
