@@ -138,6 +138,7 @@ Para emails reales, configura SMTP en `mail/send_contact.php`
 
 ## Soporte
 
-Para problemas o consultas sobre el proyecto, contacta al desarrollador:
+Para problemas o consultas sobre el proyecto, contacta a los desarrolladores:
 - Christofer Cárcamo
+- Sergio Oyarzo
 - Proyecto: Landing page - Casa Taller Cachagua
