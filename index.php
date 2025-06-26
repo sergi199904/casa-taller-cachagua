@@ -1,4 +1,3 @@
-
 <?php
 require_once 'config/config.php';
 require_once 'config/database.php';
@@ -28,7 +27,7 @@ require_once 'includes/functions.php';
 </head>
 <body>
     <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">Casa Taller Cachagua</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -48,7 +47,7 @@ require_once 'includes/functions.php';
 
     <!-- Carrusel Promocional -->
     <section id="home" class="pt-5">
-        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active"></button>
                 <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1"></button>
@@ -56,21 +55,21 @@ require_once 'includes/functions.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img\banners\banner1.jpeg" class="d-block w-100" alt="Nueva Colección">
+                    <img src="img/banners/banner1.jpeg" class="d-block w-100" alt="Nueva Colección" loading="eager">
                     <div class="carousel-caption">
                         <h2>Nueva Colección</h2>
                         <p>Descubre nuestras últimas creaciones artesanales</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img\banners\banner2.jpeg" class="d-block w-100" alt="Ofertas Especiales">
+                    <img src="img/banners/banner2.jpeg" class="d-block w-100" alt="Ofertas Especiales" loading="lazy">
                     <div class="carousel-caption">
                         <h2>Piezas Exclusivas</h2>
                         <p>Creaciones únicas hechas a mano</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img\banners\banner3.jpeg" class="d-block w-100" alt="Arte Único">
+                    <img src="img/banners/banner3.jpeg" class="d-block w-100" alt="Arte Único" loading="lazy">
                     <div class="carousel-caption">
                         <h2>Arte Único</h2>
                         <p>Cada pieza cuenta una historia</p>
@@ -78,10 +77,12 @@ require_once 'includes/functions.php';
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
             </button>
         </div>
     </section>
@@ -91,52 +92,53 @@ require_once 'includes/functions.php';
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <div id="carouselNosotros" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselNosotros" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="0" class="active"></button>
                             <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="3"></button>
                             <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="4"></button>
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="5"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="img\general\Parte de Nosotros 1.jpeg" class="d-block w-100" alt="Casa Taller Cachagua">
+                                <img src="img/general/Parte de Nosotros 1.jpeg" class="d-block w-100" alt="Casa Taller Cachagua" loading="lazy">
                             </div>
                             <div class="carousel-item">
-                                <img src="img\general\Parte de Nosotros 2.jpg" class="d-block w-100" alt="Taller">
+                                <img src="img/general/Parte de Nosotros 2.jpg" class="d-block w-100" alt="Taller" loading="lazy">
                             </div>
                             <div class="carousel-item">
-                                <img src="img\general\Parte de nosotros3.jpeg" class="d-block w-100" alt="Creaciones">
+                                <img src="img/general/Parte de nosotros3.jpeg" class="d-block w-100" alt="Creaciones" loading="lazy">
                             </div>
                             <div class="carousel-item">
-                                <img src="img\general\Parte de Nosotros 4.jpg" class="d-block w-100" alt="Arte">
+                                <img src="img/general/Parte de Nosotros 4.jpg" class="d-block w-100" alt="Arte" loading="lazy">
                             </div>
                             <div class="carousel-item">
-                                <img src="img\general\Parte de Nosotros 5.jpg" class="d-block w-100" alt="Proceso">
+                                <img src="img/general/Parte de Nosotros 5.jpg" class="d-block w-100" alt="Proceso" loading="lazy">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselNosotros" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselNosotros" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
                         </button>
                     </div>
                 </div>
                 <div class="col-lg-7 ps-lg-5">
                     <h2>¿Quienes somos?</h2>
                     <div class="nosotros-text">
-                        <p>Somos Francisca Castillo Carmona y Álvaro Pérez Wilson, pareja de artistas que hace años eligió la costa de Cachagua, comuna de Zapallar, para vivir y crear.
+                        <p>Somos Francisca Castillo Carmona y Álvaro Pérez Wilson, pareja de artistas que hace años eligió la costa de Cachagua, comuna de Zapallar, para vivir y crear.</p>
 
-Álvaro es pintor con más de 30 años de oficio; sus paisajes capturan in situ la luz y la vida de nuestras playas y paseos costeros. También modela piezas en cerámica gres.
+                        <p>Álvaro es pintor con más de 30 años de oficio; sus paisajes capturan in situ la luz y la vida de nuestras playas y paseos costeros. También modela piezas en cerámica gres.</p>
 
-Francisca es artista autodidacta formada en talleres de México y Chile; se dedica a la xilografía y a la cerámica gres, siempre explorando texturas y colores vibrantes.
+                        <p>Francisca es artista autodidacta formada en talleres de México y Chile; se dedica a la xilografía y a la cerámica gres, siempre explorando texturas y colores vibrantes.</p>
 
-Nuestra casa-taller es un refugio donde el arte se ve, se respira y se vive cada día. Aquí producimos obras únicas, exhibimos nuestras colecciones y recibimos a quienes buscan piezas originales hechas a mano. Participamos en ferias y exposiciones locales e internacionales, llevando un pedacito de Cachagua a cada rincón.
+                        <p>Nuestra casa-taller es un refugio donde el arte se ve, se respira y se vive cada día. Aquí producimos obras únicas, exhibimos nuestras colecciones y recibimos a quienes buscan piezas originales hechas a mano. Participamos en ferias y exposiciones locales e internacionales, llevando un pedacito de Cachagua a cada rincón.</p>
 
-Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y creatividad, y que invita a conectar con la alegría y el valor de lo hecho con pasión y oficio.</p>
+                        <p>Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y creatividad, y que invita a conectar con la alegría y el valor de lo hecho con pasión y oficio.</p>
                     </div>
                 </div>
             </div>
@@ -170,13 +172,15 @@ Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y cre
                                 <div class="producto-img-wrapper">
                                     <img src="img/productos/<?php echo htmlspecialchars($producto['imagen']); ?>" 
                                          class="card-img-top producto-img" 
-                                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                                         loading="lazy">
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
                                     <?php if ($producto['instagram_link']) { ?>
                                         <a href="<?php echo htmlspecialchars($producto['instagram_link']); ?>" 
                                            target="_blank" 
+                                           rel="noopener noreferrer"
                                            class="btn btn-sm btn-outline-primary">
                                             <i class="fab fa-instagram"></i> Ver en Instagram
                                         </a>
@@ -261,7 +265,8 @@ Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y cre
                             height="300" 
                             style="border:0;" 
                             allowfullscreen="" 
-                            loading="lazy">
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                     <div class="text-center mt-4">
@@ -279,23 +284,24 @@ Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y cre
             <h2 class="text-center mb-5">Contáctanos</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <form id="contactForm" action="mail/send_contact.php" method="POST">
+                    <form id="contactForm" action="mail/send_contact.php" method="POST" novalidate>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="nombre" class="form-label">Nombre *</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="50">
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Email *</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" required maxlength="100">
                             </div>
                             <div class="col-12">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono">
+                                <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="20" placeholder="+56 9 XXXX XXXX">
                             </div>
                             <div class="col-12">
                                 <label for="mensaje" class="form-label">Mensaje *</label>
-                                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required minlength="10" maxlength="1000" placeholder="Escribe tu mensaje aquí..."></textarea>
+                                <div class="form-text">Mínimo 10 caracteres, máximo 1000.</div>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary btn-lg">
@@ -320,10 +326,10 @@ Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y cre
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="social-links">
-                        <a href="https://instagram.com/casatallercachagua" target="_blank" class="text-white me-3">
+                        <a href="https://instagram.com/casatallercachagua" target="_blank" rel="noopener noreferrer" class="text-white me-3">
                             <i class="fab fa-instagram fa-2x"></i>
                         </a>
-                        <a href="https://wa.me/56912345678" target="_blank" class="text-white">
+                        <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" class="text-white">
                             <i class="fab fa-whatsapp fa-2x"></i>
                         </a>
                     </div>
@@ -332,6 +338,11 @@ Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y cre
             </div>
         </div>
     </footer>
+
+    <!-- Botón de Acceso a Administración -->
+    <a href="admin/login.php" class="btn admin-access-btn" title="Acceso Administrador">
+        <i class="fas fa-cog"></i>
+    </a>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

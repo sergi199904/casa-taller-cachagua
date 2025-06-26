@@ -7,6 +7,7 @@
     --dark-bg: #23282d;
     --text-dark: #333333;
     --text-light: #666666;
+    --navbar-bg: #000000; /* Negro para navbar */
 }
 
 /* Reset y Estilos Generales */
@@ -30,22 +31,22 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
-/* Navbar actualizado */
+/* Navbar actualizado con fondo negro */
 .navbar {
-    background-color: #ffffff !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--navbar-bg) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
 
 .navbar-brand {
     font-size: 1.75rem;
-    color: var(--primary-color) !important;
+    color: #ffffff !important; /* Texto blanco para contraste */
     font-weight: 700;
     font-family: Georgia, serif;
 }
 
 .navbar-nav .nav-link {
-    color: #444 !important;
+    color: #ffffff !important; /* Texto blanco */
     font-weight: 400;
     font-size: 16px;
     margin: 0 10px;
@@ -53,29 +54,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--primary-color) !important;
+    color: #cccccc !important; /* Gris claro al hover */
 }
 
-/* Carrusel Principal */
+.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Carrusel Principal - Mejorado para imágenes */
 .carousel {
     margin-top: 76px;
 }
 
 .carousel-item {
-    height: 500px;
+    height: 60vh; /* Altura relativa */
+    min-height: 400px;
+    max-height: 600px;
     position: relative;
+    overflow: hidden;
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Mantiene proporción sin distorsión */
+    object-position: center center;
+    filter: brightness(0.8); /* Oscurece ligeramente para mejor legibilidad del texto */
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     padding: 30px;
-    border-radius: 0;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    bottom: 20%;
 }
 
 .carousel-caption h2 {
@@ -84,6 +100,39 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
     font-weight: bold;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Controles del carrusel mejorados */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.carousel-indicators .active {
+    background-color: #ffffff;
 }
 
 /* Secciones */
@@ -129,11 +178,11 @@ section h2 {
 #carouselNosotros .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Para ver imagen completa */
+    object-fit: cover; /* Cambio de contain a cover para mejor visualización */
     background-color: #f5f5f5;
 }
 
-/* Indicadores del carrusel */
+/* Indicadores del carrusel nosotros */
 #carouselNosotros .carousel-indicators {
     bottom: 10px;
 }
@@ -258,13 +307,83 @@ section h2 {
 
 /* Formulario de Contacto */
 .form-control {
-    border-radius: 0;
+    border-radius: 5px;
     border: 1px solid #ddd;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 0.2rem rgba(122, 30, 58, 0.25);
+}
+
+/* Validación de formulario */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 5.8 0.4-0.4 0.4 0.4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-valid {
+    border-color: #28a745;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='m2.3 6.73 0.13-.02 1.92-2.23L5.8 3 4.38 4.51 2.12 6.64z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Modal personalizado */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 2rem 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 1rem 1.5rem;
+}
+
+/* Botón de administrador */
+.admin-access-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.admin-access-btn:hover {
+    background-color: #5a1528;
+    transform: scale(1.1);
+    color: white;
 }
 
 /* Botones */
@@ -317,8 +436,20 @@ footer h5 {
 
 /* Mensajes de alerta */
 .alert {
-    border-radius: 0;
+    border-radius: 10px;
     animation: slideIn 0.5s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
 @keyframes slideIn {
@@ -335,11 +466,21 @@ footer h5 {
 /* Responsive */
 @media (max-width: 768px) {
     .carousel-item {
-        height: 300px;
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .carousel-caption {
+        bottom: 10%;
+        padding: 20px;
     }
     
     .carousel-caption h2 {
         font-size: 1.8rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
     }
     
     section {
@@ -372,6 +513,14 @@ footer h5 {
         text-align: center;
         padding: 20px 0;
     }
+    
+    .admin-access-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -383,6 +532,14 @@ footer h5 {
     
     .producto-card .card-title {
         font-size: 1rem;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
     }
 }
 
@@ -427,5 +584,5 @@ footer h5 {
 
 /* Navbar shadow on scroll */
 .navbar.shadow-lg {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
 }
