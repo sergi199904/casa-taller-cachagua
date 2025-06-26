@@ -28,7 +28,7 @@ require_once 'includes/functions.php';
 </head>
 <body>
     <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">Casa Taller Cachagua</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -56,21 +56,21 @@ require_once 'includes/functions.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img\banners\Banner 1.webp" class="d-block w-100" alt="Nueva Colección">
+                    <img src="img\banners\banner1.jpeg" class="d-block w-100" alt="Nueva Colección">
                     <div class="carousel-caption">
                         <h2>Nueva Colección</h2>
                         <p>Descubre nuestras últimas creaciones artesanales</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banners/banner2.jpg" class="d-block w-100" alt="Ofertas Especiales">
+                    <img src="img\banners\banner2.jpeg" class="d-block w-100" alt="Ofertas Especiales">
                     <div class="carousel-caption">
-                        <h2>Ofertas Especiales</h2>
-                        <p>Hasta 30% de descuento en piezas seleccionadas</p>
+                        <h2>Piezas Exclusivas</h2>
+                        <p>Creaciones únicas hechas a mano</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banners/banner3.jpg" class="d-block w-100" alt="Arte Único">
+                    <img src="img\banners\banner3.jpeg" class="d-block w-100" alt="Arte Único">
                     <div class="carousel-caption">
                         <h2>Arte Único</h2>
                         <p>Cada pieza cuenta una historia</p>
@@ -102,13 +102,13 @@ require_once 'includes/functions.php';
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="img\general\Parte de Nosotros 1.webp" class="d-block w-100" alt="Casa Taller Cachagua">
+                                <img src="img\general\Parte de Nosotros 1.jpeg" class="d-block w-100" alt="Casa Taller Cachagua">
                             </div>
                             <div class="carousel-item">
                                 <img src="img\general\Parte de Nosotros 2.jpg" class="d-block w-100" alt="Taller">
                             </div>
                             <div class="carousel-item">
-                                <img src="img\general\Parte de Nosotros 3.jpg" class="d-block w-100" alt="Creaciones">
+                                <img src="img\general\Parte de nosotros3.jpeg" class="d-block w-100" alt="Creaciones">
                             </div>
                             <div class="carousel-item">
                                 <img src="img\general\Parte de Nosotros 4.jpg" class="d-block w-100" alt="Arte">
@@ -128,8 +128,15 @@ require_once 'includes/functions.php';
                 <div class="col-lg-7 ps-lg-5">
                     <h2>¿Quienes somos?</h2>
                     <div class="nosotros-text">
-                        <p>Somos una pareja que vive en el tranquilo y hermoso pueblo de Cachagua, un lugar que inspira cada rincón de nuestro día a día. Aquí, entre la calma del paisaje y la rica tradición cultural, hemos encontrado un espacio para crear y compartir nuestra pasión por el arte.</p>
-                        <p>Nos encantaría abrir las puertas de nuestro hogar para recibirte, mostrarte el arte que nace aquí y compartir momentos únicos contigo. Ya sea que vengas por curiosidad, para explorar nuevas ideas o simplemente para disfrutar del arte, siempre serás bienvenido en este espacio lleno de creatividad y amor.</p>
+                        <p>Somos Francisca Castillo Carmona y Álvaro Pérez Wilson, pareja de artistas que hace años eligió la costa de Cachagua, comuna de Zapallar, para vivir y crear.
+
+Álvaro es pintor con más de 30 años de oficio; sus paisajes capturan in situ la luz y la vida de nuestras playas y paseos costeros. También modela piezas en cerámica gres.
+
+Francisca es artista autodidacta formada en talleres de México y Chile; se dedica a la xilografía y a la cerámica gres, siempre explorando texturas y colores vibrantes.
+
+Nuestra casa-taller es un refugio donde el arte se ve, se respira y se vive cada día. Aquí producimos obras únicas, exhibimos nuestras colecciones y recibimos a quienes buscan piezas originales hechas a mano. Participamos en ferias y exposiciones locales e internacionales, llevando un pedacito de Cachagua a cada rincón.
+
+Casa Taller Cachagua es nuestro proyecto de vida: un espacio que une hogar y creatividad, y que invita a conectar con la alegría y el valor de lo hecho con pasión y oficio.</p>
                     </div>
                 </div>
             </div>
