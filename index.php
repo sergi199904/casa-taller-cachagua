@@ -45,47 +45,63 @@ require_once 'includes/functions.php';
         </div>
     </nav>
 
-    <!-- Carrusel Promocional -->
-    <section id="home" class="pt-5">
-        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="img\banners\1.jpeg" class="d-block w-100" alt="Nueva Colección" loading="eager">
-                    <div class="carousel-caption">
-                        <h2>Nueva Colección</h2>
-                        <p>Descubre nuestras últimas creaciones artesanales</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img\banners\3.jpeg" class="d-block w-100" alt="Ofertas Especiales" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Piezas Exclusivas</h2>
-                        <p>Creaciones únicas hechas a mano</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img\banners\7.jpeg" class="d-block w-100" alt="Arte Único" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Arte Único</h2>
-                        <p>Cada pieza cuenta una historia</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
+<!-- Carrusel Promocional - ACTUALIZADO CON IMÁGENES DE CERÁMICA -->
+<section id="home" class="pt-5">
+    <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="4" aria-label="Slide 5"></button>
         </div>
-    </section>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img\banners\1.jpeg" class="d-block w-100" alt="Bowl de Cerámica Artesanal" loading="eager">
+                <div class="carousel-caption">
+                    <h2>Cerámica Artesanal</h2>
+                    <p>Bowls únicos con diseños exclusivos hechos a mano</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img\banners\3.jpeg" class="d-block w-100" alt="Plato Decorativo de Cerámica" loading="lazy">
+                <div class="carousel-caption">
+                    <h2>Arte Funcional</h2>
+                    <p>Platos decorativos que combinan belleza y utilidad</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img\banners\7.jpeg" class="d-block w-100" alt="Recipiente de Cerámica Minimalista" loading="lazy">
+                <div class="carousel-caption">
+                    <h2>Diseño Minimalista</h2>
+                    <p>Recipientes con líneas puras y acabados naturales</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img\banners\9.jpeg" class="d-block w-100" alt="Vasija Multicolor Artesanal" loading="lazy">
+                <div class="carousel-caption">
+                    <h2>Explosión de Color</h2>
+                    <p>Vasijas que capturan la vibración de la naturaleza</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img\banners\10.jpeg" class="d-block w-100" alt="Vasija Grande Escultórica" loading="lazy">
+                <div class="carousel-caption">
+                    <h2>Piezas Únicas</h2>
+                    <p>Cada vasija cuenta su propia historia artesanal</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+</section>
 
     <!-- Sección Nosotros -->
     <section id="nosotros" class="py-5">
