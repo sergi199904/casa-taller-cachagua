@@ -1,6 +1,15 @@
 <?php
-session_start();
-require_once '../config/database.php';
+// Suprimir errores y warnings completamente
+error_reporting(0);
+ini_set('display_errors', '0');
+
+// Iniciar sesión de forma segura
+if (session_status() == PHP_SESSION_NONE) {
+    @session_start();
+}
+
+// Incluir archivos necesarios de forma silenciosa
+@require_once '../config/database.php';
 
 // Verificar si está logueado
 if (!isset($_SESSION['admin_id'])) {
@@ -8,22 +17,22 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-// Obtener estadísticas
+// Obtener estadísticas de forma silenciosa
 $stats = array();
 
 // Total de productos
 $query = "SELECT COUNT(*) as total FROM productos";
-$result = mysqli_query($conexion, $query);
-$stats['productos'] = mysqli_fetch_assoc($result)['total'];
+$result = @mysqli_query($conexion, $query);
+$stats['productos'] = $result ? @mysqli_fetch_assoc($result)['total'] : 0;
 
 // Total de mensajes
 $query = "SELECT COUNT(*) as total FROM contactos";
-$result = mysqli_query($conexion, $query);
-$stats['mensajes'] = mysqli_fetch_assoc($result)['total'];
+$result = @mysqli_query($conexion, $query);
+$stats['mensajes'] = $result ? @mysqli_fetch_assoc($result)['total'] : 0;
 
-// Mensajes recientes
-$query = "SELECT * FROM contactos ORDER BY fecha DESC LIMIT 5";
-$mensajes_recientes = mysqli_query($conexion, $query);
+// Mensajes recientes - Aumentamos el límite y ordenamos por fecha
+$query = "SELECT * FROM contactos ORDER BY fecha DESC LIMIT 10";
+$mensajes_recientes = @mysqli_query($conexion, $query);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,6 +43,76 @@ $mensajes_recientes = mysqli_query($conexion, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css">
+    <style>
+        /* Estilos adicionales para mejorar la visualización de mensajes */
+        .mensaje-completo {
+            max-width: 400px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        
+        .mensaje-preview {
+            cursor: pointer;
+            color: #0066cc;
+            text-decoration: underline;
+        }
+        
+        .mensaje-preview:hover {
+            color: #004499;
+        }
+        
+        .table-mensajes th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            color: #495057;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .table-mensajes td {
+            vertical-align: middle;
+            padding: 12px 8px;
+        }
+        
+        .mensaje-card {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .badge-nuevo {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+        
+        .email-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .email-link:hover {
+            color: #004499;
+            text-decoration: underline;
+        }
+        
+        /* Responsive para tabla de mensajes */
+        @media (max-width: 768px) {
+            .table-responsive {
+                font-size: 0.875rem;
+            }
+            
+            .mensaje-completo {
+                max-width: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -65,7 +144,7 @@ $mensajes_recientes = mysqli_query($conexion, $query);
                 </ul>
                 <div class="navbar-nav">
                     <span class="navbar-text me-3">
-                        <i class="fas fa-user"></i> <?php echo $_SESSION['admin_nombre']; ?>
+                        <i class="fas fa-user"></i> <?php echo isset($_SESSION['admin_nombre']) ? htmlspecialchars($_SESSION['admin_nombre']) : 'Admin'; ?>
                     </span>
                     <a class="nav-link" href="logout.php">
                         <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
@@ -91,7 +170,7 @@ $mensajes_recientes = mysqli_query($conexion, $query);
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-0">Total Productos</h6>
-                                <h2 class="mb-0"><?php echo $stats['productos']; ?></h2>
+                                <h2 class="mb-0"><?php echo isset($stats['productos']) ? $stats['productos'] : '0'; ?></h2>
                             </div>
                             <i class="fas fa-box fa-3x opacity-50"></i>
                         </div>
@@ -109,7 +188,7 @@ $mensajes_recientes = mysqli_query($conexion, $query);
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-0">Mensajes Recibidos</h6>
-                                <h2 class="mb-0"><?php echo $stats['mensajes']; ?></h2>
+                                <h2 class="mb-0"><?php echo isset($stats['mensajes']) ? $stats['mensajes'] : '0'; ?></h2>
                             </div>
                             <i class="fas fa-envelope fa-3x opacity-50"></i>
                         </div>
@@ -156,39 +235,118 @@ $mensajes_recientes = mysqli_query($conexion, $query);
             </div>
         </div>
 
-        <!-- Mensajes Recientes -->
+        <!-- Mensajes Recientes Mejorados -->
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"><i class="fas fa-envelope"></i> Mensajes Recientes</h5>
+                        <span class="badge bg-primary"><?php echo isset($stats['mensajes']) ? $stats['mensajes'] : '0'; ?> total</span>
                     </div>
-                    <div class="card-body">
-                        <?php if (mysqli_num_rows($mensajes_recientes) > 0): ?>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
+                    <div class="card-body p-0">
+                        <?php if ($mensajes_recientes && @mysqli_num_rows($mensajes_recientes) > 0): ?>
+                            <div class="table-responsive mensaje-card">
+                                <table class="table table-hover table-mensajes mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Fecha</th>
-                                            <th>Nombre</th>
-                                            <th>Email</th>
+                                            <th style="width: 140px;">Fecha</th>
+                                            <th style="width: 180px;">Contacto</th>
                                             <th>Mensaje</th>
+                                            <th style="width: 80px;">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while($mensaje = mysqli_fetch_assoc($mensajes_recientes)): ?>
+                                        <?php 
+                                        $contador = 0;
+                                        while($mensaje = @mysqli_fetch_assoc($mensajes_recientes)): 
+                                            $contador++;
+                                            $es_reciente = strtotime($mensaje['fecha']) > strtotime('-24 hours');
+                                            $mensaje_id = 'mensaje_' . $mensaje['id'];
+                                        ?>
                                             <tr>
-                                                <td><?php echo date('d/m/Y H:i', strtotime($mensaje['fecha'])); ?></td>
-                                                <td><?php echo htmlspecialchars($mensaje['nombre']); ?></td>
-                                                <td><?php echo htmlspecialchars($mensaje['email']); ?></td>
-                                                <td><?php echo substr(htmlspecialchars($mensaje['mensaje']), 0, 100) . '...'; ?></td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <strong><?php echo @date('d/m/Y', strtotime($mensaje['fecha'])); ?></strong>
+                                                        <small class="text-muted"><?php echo @date('H:i', strtotime($mensaje['fecha'])); ?></small>
+                                                        <?php if ($es_reciente): ?>
+                                                            <span class="badge-nuevo mt-1">Nuevo</span>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <strong><?php echo htmlspecialchars($mensaje['nombre']); ?></strong>
+                                                        <a href="mailto:<?php echo htmlspecialchars($mensaje['email']); ?>" 
+                                                           class="email-link small">
+                                                            <?php echo htmlspecialchars($mensaje['email']); ?>
+                                                        </a>
+                                                        <?php if (!empty($mensaje['telefono'])): ?>
+                                                            <small class="text-muted">
+                                                                <i class="fas fa-phone fa-xs"></i> 
+                                                                <?php echo htmlspecialchars($mensaje['telefono']); ?>
+                                                            </small>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="mensaje-completo">
+                                                        <?php 
+                                                        $mensaje_texto = htmlspecialchars($mensaje['mensaje']);
+                                                        if (strlen($mensaje_texto) > 150): 
+                                                        ?>
+                                                            <span id="preview_<?php echo $mensaje['id']; ?>">
+                                                                <?php echo substr($mensaje_texto, 0, 150); ?>...
+                                                                <span class="mensaje-preview" onclick="toggleMensaje(<?php echo $mensaje['id']; ?>)">
+                                                                    <br><small><i class="fas fa-eye"></i> Ver completo</small>
+                                                                </span>
+                                                            </span>
+                                                            <span id="completo_<?php echo $mensaje['id']; ?>" style="display: none;">
+                                                                <?php echo $mensaje_texto; ?>
+                                                                <span class="mensaje-preview" onclick="toggleMensaje(<?php echo $mensaje['id']; ?>)">
+                                                                    <br><small><i class="fas fa-eye-slash"></i> Ver menos</small>
+                                                                </span>
+                                                            </span>
+                                                        <?php else: ?>
+                                                            <?php echo $mensaje_texto; ?>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group-vertical btn-group-sm">
+                                                        <a href="mailto:<?php echo htmlspecialchars($mensaje['email']); ?>?subject=Re: Consulta Casa Taller&body=Hola <?php echo htmlspecialchars($mensaje['nombre']); ?>,%0D%0A%0D%0AGracias por contactarnos..." 
+                                                           class="btn btn-outline-primary btn-sm" 
+                                                           title="Responder">
+                                                            <i class="fas fa-reply"></i>
+                                                        </a>
+                                                        <button type="button" 
+                                                                class="btn btn-outline-info btn-sm" 
+                                                                onclick="copiarMensaje(<?php echo $mensaje['id']; ?>)"
+                                                                title="Copiar mensaje">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         <?php endwhile; ?>
                                     </tbody>
                                 </table>
                             </div>
+                            
+                            <?php if (@mysqli_num_rows($mensajes_recientes) >= 10): ?>
+                                <div class="card-footer text-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle"></i> 
+                                        Mostrando los 10 mensajes más recientes. 
+                                        <a href="#" class="text-decoration-none">Ver todos los mensajes</a>
+                                    </small>
+                                </div>
+                            <?php endif; ?>
                         <?php else: ?>
-                            <p class="text-muted text-center">No hay mensajes recientes</p>
+                            <div class="text-center py-5">
+                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">No hay mensajes recientes</p>
+                                <small class="text-muted">Los mensajes de contacto aparecerán aquí</small>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -227,5 +385,55 @@ $mensajes_recientes = mysqli_query($conexion, $query);
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Función para mostrar/ocultar mensaje completo
+        function toggleMensaje(id) {
+            const preview = document.getElementById('preview_' + id);
+            const completo = document.getElementById('completo_' + id);
+            
+            if (preview.style.display === 'none') {
+                preview.style.display = 'inline';
+                completo.style.display = 'none';
+            } else {
+                preview.style.display = 'none';
+                completo.style.display = 'inline';
+            }
+        }
+        
+        // Función para copiar mensaje al portapapeles
+        function copiarMensaje(id) {
+            const mensajeElement = document.getElementById('completo_' + id) || document.getElementById('preview_' + id);
+            const texto = mensajeElement.innerText.replace(/Ver completo|Ver menos/g, '').trim();
+            
+            navigator.clipboard.writeText(texto).then(function() {
+                // Mostrar notificación de éxito
+                const btn = event.target.closest('button');
+                const iconOriginal = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                btn.classList.add('btn-success');
+                btn.classList.remove('btn-outline-info');
+                
+                setTimeout(() => {
+                    btn.innerHTML = iconOriginal;
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-outline-info');
+                }, 1500);
+            }).catch(function(err) {
+                console.error('Error al copiar: ', err);
+                alert('No se pudo copiar el mensaje');
+            });
+        }
+        
+        // Highlight de mensajes nuevos
+        document.addEventListener('DOMContentLoaded', function() {
+            const mensajesNuevos = document.querySelectorAll('.badge-nuevo');
+            mensajesNuevos.forEach(badge => {
+                const row = badge.closest('tr');
+                row.style.backgroundColor = 'rgba(40, 167, 69, 0.05)';
+                row.style.borderLeft = '3px solid #28a745';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,12 +1,10 @@
 <?php
-// SUPRIMIR COMPLETAMENTE TODOS LOS WARNINGS
-@error_reporting(0);
-@ini_set('display_errors', 0);
-@ini_set('display_startup_errors', 0);
-@ini_set('log_errors', 0);
 
-@session_start();
-@require_once '../config/database.php';
+// Iniciar sesión de forma silenciosa
+session_start();
+
+// Incluir base de datos de forma silenciosa
+require_once '../config/database.php';
 
 // Si ya está logueado, redirigir al dashboard
 if (isset($_SESSION['admin_id'])) {
@@ -17,16 +15,16 @@ if (isset($_SESSION['admin_id'])) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = @mysqli_real_escape_string($conexion, $_POST['email']);
+    $email = mysqli_real_escape_string($conexion, $_POST['email']);
     $password = $_POST['password'];
     
     $query = "SELECT * FROM admins WHERE email = '$email'";
-    $result = @mysqli_query($conexion, $query);
+    $result = mysqli_query($conexion, $query);
     
-    if ($result && @mysqli_num_rows($result) > 0) {
-        $admin = @mysqli_fetch_assoc($result);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $admin = mysqli_fetch_assoc($result);
         
-        if (@password_verify($password, $admin['password'])) {
+        if (password_verify($password, $admin['password'])) {
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_nombre'] = $admin['nombre'];
             $_SESSION['admin_email'] = $admin['email'];
@@ -80,14 +78,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             align-items: center;
             justify-content: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
+            padding: 20px;
         }
 
         /* Fondo animado */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -97,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
             animation: backgroundMove 20s ease-in-out infinite;
+            z-index: 0;
         }
 
         @keyframes backgroundMove {
@@ -110,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             z-index: 10;
             width: 100%;
             max-width: 450px;
-            margin: 2rem;
         }
 
         .login-card {
@@ -220,12 +219,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: #6c757d;
             position: relative;
             z-index: 2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .tab-button.active {
             background: white;
             color: #495057;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            color: #495057;
+            text-decoration: none;
         }
 
         .form-floating {
@@ -306,14 +314,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
 
-        .btn-secondary {
-            background: var(--secondary-gradient);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
-        }
-
         .login-footer {
             padding: 1.5rem 2rem 2rem;
             text-align: center;
@@ -387,8 +387,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         /* Responsive */
         @media (max-width: 768px) {
-            .login-container {
-                margin: 1rem;
+            body {
+                padding: 10px;
             }
             
             .login-header {
@@ -446,8 +446,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="login-body">
                 <!-- Pestañas Login/Registro -->
                 <div class="tab-container">
-                    <button class="tab-button active" id="loginTab">Login</button>
-                    <button class="tab-button" id="registerTab">Registrar</button>
+                    <div class="tab-button active">Login</div>
+                    <a href="register.php" class="tab-button">Registrar</a>
                 </div>
                 
                 <?php if ($error): ?>
@@ -537,16 +537,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if (showPasswordCheck) {
                 showPasswordCheck.addEventListener('change', togglePasswordVisibility);
-            }
-            
-            // Pestañas (funcionalidad futura)
-            const loginTab = document.getElementById('loginTab');
-            const registerTab = document.getElementById('registerTab');
-            
-            if (registerTab) {
-                registerTab.addEventListener('click', function() {
-                    window.location.href = 'register.php';
-                });
             }
             
             // Auto-focus en el primer campo

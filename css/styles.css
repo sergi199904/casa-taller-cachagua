@@ -4,10 +4,10 @@
     --secondary-color: #444444;
     --accent-color: #0073aa; /* Azul de WordPress */
     --light-bg: #f7f7f7;
-    --dark-bg: #23282d;
+    --dark-bg: #23282d; /* Mismo gris del footer para navbar */
     --text-dark: #333333;
     --text-light: #666666;
-    --navbar-bg: #000000; /* Negro para navbar */
+    --navbar-bg: #23282d; /* CAMBIADO: Mismo color gris del footer */
 }
 
 /* Reset y Estilos Generales */
@@ -31,94 +31,169 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
-/* Navbar actualizado con fondo negro */
+/* Navbar actualizado con mismo color gris del footer */
 .navbar {
-    background-color: var(--navbar-bg) !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background-color: var(--navbar-bg) !important; /* Ahora es el mismo gris del footer */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra más sutil para gris */
     transition: all 0.3s ease;
+    padding: 0.8rem 0; /* Más padding para dar altura al navbar */
 }
 
 .navbar-brand {
-    font-size: 1.75rem;
-    color: #ffffff !important; /* Texto blanco para contraste */
+    font-size: 2.2rem; /* Aumentado de 1.75rem */
+    color: var(--primary-color) !important; /* Color vino/burgundy */
     font-weight: 700;
     font-family: Georgia, serif;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6); /* Sombra ajustada para fondo gris */
 }
 
+/* Links del navbar más grandes y del mismo color */
 .navbar-nav .nav-link {
-    color: #ffffff !important; /* Texto blanco */
-    font-weight: 400;
-    font-size: 16px;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+    color: var(--primary-color) !important; /* Color vino/burgundy igual al título */
+    font-weight: 600; /* Aumentado de 500 para más presencia */
+    font-size: 1.1rem; /* Aumentado de 16px para mejor proporción */
+    margin: 0 15px; /* Más espacio entre enlaces */
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Sombra ajustada para fondo gris */
+    padding: 0.5rem 0.8rem; /* Más padding para hacer los enlaces más grandes */
 }
 
 .navbar-nav .nav-link:hover {
-    color: #cccccc !important; /* Gris claro al hover */
+    color: #a02548 !important; /* Versión ligeramente más clara al hover */
+    transform: translateY(-1px);
+    background-color: rgba(122, 30, 58, 0.15); /* Fondo sutil al hover ajustado para gris */
+    border-radius: 5px;
 }
 
 .navbar-toggler {
-    border-color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28122, 30, 58, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Carrusel Principal - Mejorado para imágenes */
-.carousel {
+/* Carrusel Principal - Ajustado para mostrar imagen completa en altura */
+#carouselBanners {
     margin-top: 76px;
+    padding: 0 40px; /* Solo el carrusel principal tiene padding lateral */
 }
 
-.carousel-item {
-    height: 60vh; /* Altura relativa */
-    min-height: 400px;
-    max-height: 600px;
+.carousel {
+    /* Quitar el padding general para no afectar otros carruseles */
+}
+
+#carouselBanners .carousel-item {
+    height: 55vh; /* Reducido ligeramente para mejor proporción */
+    min-height: 380px; 
+    max-height: 550px; 
     position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px; /* Borde redondeado al contenedor */
+}
+
+#carouselBanners .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* CONTAIN para ver imagen completa */
+    object-position: center center;
+    filter: brightness(0.9) contrast(1.1);
+    display: block;
+    /* Borde difuminado más sutil */
+    border-radius: 15px;
+    box-shadow: 
+        inset 0 0 40px rgba(0,0,0,0.06),
+        0 4px 15px rgba(0,0,0,0.1);
+    margin: 10px; /* Margen más pequeño */
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+}
+
+/* Overlay más sutil solo para carrusel principal */
+#carouselBanners .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0,0,0,0.03) 0%, 
+        transparent 20%, 
+        transparent 80%, 
+        rgba(0,0,0,0.03) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+/* Asegurar que no haya márgenes o padding extra en carrusel principal */
+#carouselBanners .carousel-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
     overflow: hidden;
 }
 
-.carousel-item img {
+#carouselBanners .carousel-inner .carousel-item {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantiene proporción sin distorsión */
-    object-position: center center;
-    filter: brightness(0.8); /* Oscurece ligeramente para mejor legibilidad del texto */
 }
 
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    bottom: 20%;
+#carouselBanners .carousel-caption {
+    background: rgba(0, 0, 0, 0.85); 
+    padding: 20px 30px; /* Más compacto */
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    bottom: 10%; 
+    max-width: 60%; /* Más estrecho para mejor proporción */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; 
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.carousel-caption h2 {
+#carouselBanners .carousel-caption h2 {
     font-family: Georgia, serif;
-    font-size: 3rem;
+    font-size: 2.5rem; /* Reducido para mejor proporción */
     color: #ffffff;
     font-weight: bold;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
 }
 
-.carousel-caption p {
-    font-size: 1.2rem;
+#carouselBanners .carousel-caption p {
+    font-size: 1.1rem; /* Reducido para mejor proporción */
     color: #ffffff;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+    margin-bottom: 0;
 }
 
 /* Controles del carrusel mejorados */
 .carousel-control-prev,
 .carousel-control-next {
     width: 5%;
-    opacity: 0.8;
+    opacity: 0.9;
+    background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+}
+
+.carousel-control-next {
+    background: linear-gradient(to left, rgba(0,0,0,0.3), transparent);
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
     opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
 }
 
 /* Indicadores del carrusel */
@@ -133,6 +208,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .carousel-indicators .active {
     background-color: #ffffff;
+    transform: scale(1.2);
 }
 
 /* Secciones */
@@ -164,27 +240,53 @@ section h2 {
     font-family: Georgia, serif;
 }
 
-/* Carrusel de la sección nosotros */
+/* Carrusel de la sección nosotros - RESTAURADO completamente */
 #carouselNosotros {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 500px;
+}
+
+#carouselNosotros .carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 #carouselNosotros .carousel-item {
     height: 500px;
+    position: relative;
+    width: 100%;
+}
+
+#carouselNosotros .carousel-item.active {
+    display: block;
 }
 
 #carouselNosotros .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cambio de contain a cover para mejor visualización */
-    background-color: #f5f5f5;
+    object-fit: cover;
+    display: block;
 }
 
 /* Indicadores del carrusel nosotros */
 #carouselNosotros .carousel-indicators {
     bottom: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15%;
+    margin-bottom: 1rem;
+    margin-left: 15%;
+    list-style: none;
 }
 
 #carouselNosotros .carousel-indicators button {
@@ -195,16 +297,62 @@ section h2 {
     background-color: var(--primary-color);
     border: none;
     opacity: 0.5;
+    transition: opacity 0.3s ease;
 }
 
 #carouselNosotros .carousel-indicators button.active {
     opacity: 1;
 }
 
-/* Controles del carrusel */
+/* Controles del carrusel nosotros */
 #carouselNosotros .carousel-control-prev,
 #carouselNosotros .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: 0.8;
+    transition: opacity 0.15s ease;
+}
+
+#carouselNosotros .carousel-control-prev {
+    left: 0;
+}
+
+#carouselNosotros .carousel-control-next {
+    right: 0;
+}
+
+#carouselNosotros .carousel-control-prev:hover,
+#carouselNosotros .carousel-control-next:hover {
+    opacity: 1;
+}
+
+#carouselNosotros .carousel-control-prev-icon,
+#carouselNosotros .carousel-control-next-icon {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+}
+
+#carouselNosotros .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='m11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+#carouselNosotros .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='m4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
 /* Texto de la sección nosotros */
@@ -240,12 +388,15 @@ section h2 {
     height: 300px;
     overflow: hidden;
     background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .producto-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Para ver productos completos */
+    object-fit: contain; /* También contain para productos */
     transition: transform 0.3s ease;
 }
 
@@ -465,22 +616,38 @@ footer h5 {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .carousel-item {
-        height: 50vh;
-        min-height: 300px;
+    #carouselBanners {
+        padding: 0 20px; /* Solo el carrusel principal tiene menos padding en móvil */
+        margin-top: 76px; /* Asegurar que mantenga el margen */
     }
     
-    .carousel-caption {
-        bottom: 10%;
-        padding: 20px;
+    #carouselBanners .carousel-item {
+        height: 45vh; /* Más pequeño en móvil */
+        min-height: 280px; 
     }
     
-    .carousel-caption h2 {
-        font-size: 1.8rem;
+    #carouselBanners .carousel-caption {
+        bottom: 6%;
+        padding: 15px 20px; /* Más compacto en móvil */
+        max-width: 80%;
     }
     
-    .carousel-caption p {
-        font-size: 1rem;
+    #carouselBanners .carousel-caption h2 {
+        font-size: 1.8rem; /* Más pequeño en móvil */
+    }
+    
+    #carouselBanners .carousel-caption p {
+        font-size: 0.95rem; /* Más pequeño en móvil */
+    }
+    
+    .navbar-brand {
+        font-size: 1.8rem; 
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 1rem; 
+        margin: 0 8px;
+        padding: 0.4rem 0.6rem;
     }
     
     section {
@@ -492,6 +659,10 @@ footer h5 {
     }
     
     #carouselNosotros .carousel-item {
+        height: 350px; 
+    }
+    
+    #carouselNosotros {
         height: 350px;
     }
     
@@ -512,6 +683,9 @@ footer h5 {
     .navbar-nav {
         text-align: center;
         padding: 20px 0;
+        background-color: rgba(35, 40, 45, 0.95); 
+        border-radius: 10px;
+        margin: 10px;
     }
     
     .admin-access-btn {
@@ -524,6 +698,31 @@ footer h5 {
 }
 
 @media (max-width: 576px) {
+    #carouselBanners {
+        padding: 0 10px; /* Muy poco padding en pantallas pequeñas */
+    }
+    
+    #carouselBanners .carousel-caption h2 {
+        font-size: 1.5rem; 
+    }
+    
+    #carouselBanners .carousel-caption p {
+        font-size: 0.85rem;
+    }
+    
+    #carouselBanners .carousel-item {
+        height: 40vh; /* Más compacto en pantallas muy pequeñas */
+        min-height: 250px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.95rem;
+    }
+    
     .filter-btn {
         font-size: 0.8rem;
         padding: 0.25rem 0.5rem;
@@ -532,14 +731,6 @@ footer h5 {
     
     .producto-card .card-title {
         font-size: 1rem;
-    }
-    
-    .carousel-caption h2 {
-        font-size: 1.5rem;
-    }
-    
-    .carousel-caption p {
-        font-size: 0.9rem;
     }
 }
 
@@ -584,5 +775,5 @@ footer h5 {
 
 /* Navbar shadow on scroll */
 .navbar.shadow-lg {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2) !important; /* Sombra ajustada para fondo gris */
 }

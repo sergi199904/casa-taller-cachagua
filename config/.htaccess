@@ -1,0 +1,21 @@
+# Configurar opciones de sesión a nivel de servidor
+# para evitar conflictos con ini_set()
+
+<IfModule mod_php.c>
+    # Configuración de sesión segura
+    php_value session.cookie_httponly 1
+    php_value session.use_only_cookies 1
+    php_value session.cookie_secure 0
+    
+    # Suprimir errores y warnings
+    php_value display_errors 0
+    php_value display_startup_errors 0
+    php_value log_errors 0
+    php_value error_reporting 0
+</IfModule>
+
+# Proteger el archivo de configuración
+<Files "*.php">
+    Order allow,deny
+    Deny from all
+</Files>

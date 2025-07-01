@@ -36,11 +36,11 @@ CREATE TABLE IF NOT EXISTS contactos (
 
 -- Insertar productos de ejemplo
 INSERT INTO productos (nombre, imagen, instagram_link, categoria) VALUES
-('Pintura Abstracta Mar', 'pintura1.jpg', 'https://instagram.com/p/abc123', 'pinturas'),
-('Cerámica Artesanal Azul', 'ceramica1.jpg', 'https://instagram.com/p/def456', 'ceramica'),
-('Grabado Original Cachagua', 'grabado1.jpg', 'https://instagram.com/p/ghi789', 'grabados'),
-('Escultura en Madera', 'escultura1.jpg', 'https://instagram.com/p/jkl012', 'esculturas'),
-('Pintura Atardecer', 'pintura2.jpg', 'https://instagram.com/p/mno345', 'pinturas'),
+('Pintura Abstracta Mar', 'pintura1.jpg', 'https://www.instagram.com/p/C433TMCxzDr/?img_index=1', 'pinturas'),
+('Grabados serie CAMINOS', 'ceramica1.jpg', 'https://www.instagram.com/p/C4q_U91xR-d/?img_index=3', 'pinturas'),
+('Matrices de Xilografias "Los Caminos "', 'grabado1.jpg', 'https://www.instagram.com/p/C0sDpuHxb2x/?img_index=3', 'grabados'),
+('La primavera cabeza de ceramica gres', 'escultura1.jpg', 'https://www.instagram.com/p/CyMb0xERW-O/ ', 'esculturas'),
+('lamparas de ceramica gres', 'pintura2.jpg', 'https://www.instagram.com/p/CyUJ4TARi6-/?img_index=1', 'esculturas'),
 ('Jarrón de Cerámica', 'ceramica2.jpg', 'https://instagram.com/p/pqr678', 'ceramica'),
 ('Xilografía Costa', 'grabado2.jpg', 'https://instagram.com/p/stu901', 'grabados'),
 ('Pintura Marina', 'pintura3.jpg', 'https://instagram.com/p/vwx234', 'pinturas');

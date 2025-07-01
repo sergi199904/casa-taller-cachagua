@@ -47,29 +47,29 @@ require_once 'includes/functions.php';
 
     <!-- Carrusel Promocional -->
     <section id="home" class="pt-5">
-        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/banners/banner1.jpeg" class="d-block w-100" alt="Nueva Colección" loading="eager">
+                    <img src="img\banners\1.jpeg" class="d-block w-100" alt="Nueva Colección" loading="eager">
                     <div class="carousel-caption">
                         <h2>Nueva Colección</h2>
                         <p>Descubre nuestras últimas creaciones artesanales</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banners/banner2.jpeg" class="d-block w-100" alt="Ofertas Especiales" loading="lazy">
+                    <img src="img\banners\3.jpeg" class="d-block w-100" alt="Ofertas Especiales" loading="lazy">
                     <div class="carousel-caption">
                         <h2>Piezas Exclusivas</h2>
                         <p>Creaciones únicas hechas a mano</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banners/banner3.jpeg" class="d-block w-100" alt="Arte Único" loading="lazy">
+                    <img src="img\banners\7.jpeg" class="d-block w-100" alt="Arte Único" loading="lazy">
                     <div class="carousel-caption">
                         <h2>Arte Único</h2>
                         <p>Cada pieza cuenta una historia</p>
@@ -347,5 +347,36 @@ require_once 'includes/functions.php';
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Script adicional para asegurar funcionamiento del carrusel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración específica para cada carrusel
+            
+            // Carrusel principal
+            const mainCarousel = document.getElementById('carouselBanners');
+            if (mainCarousel) {
+                new bootstrap.Carousel(mainCarousel, {
+                    interval: 4000,
+                    wrap: true,
+                    keyboard: true,
+                    pause: 'hover',
+                    ride: 'carousel'
+                });
+            }
+            
+            // Carrusel de nosotros - Configuración simple y funcional
+            const nosotrosCarousel = document.getElementById('carouselNosotros');
+            if (nosotrosCarousel) {
+                new bootstrap.Carousel(nosotrosCarousel, {
+                    interval: 5000, 
+                    wrap: true,
+                    keyboard: true,
+                    pause: 'hover',
+                    ride: 'carousel'
+                });
+            }
+        });
+    </script>
 </body>
 </html>

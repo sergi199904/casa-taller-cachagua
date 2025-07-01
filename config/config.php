@@ -1,22 +1,17 @@
 <?php
 // config/config.php - Configuración general del sitio
 
+// Suprimir TODOS los errores y warnings de forma silenciosa
+error_reporting(0);
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+ini_set('log_errors', '0');
+
 // Configuración del entorno
 define('ENVIRONMENT', 'development'); // Cambiar a 'production' en servidor
 
-// Configuración de errores según el entorno
-if (ENVIRONMENT == 'production') {
-    error_reporting(0);
-    ini_set('display_errors', 0);
-} else {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-}
-
-// Configuración de seguridad
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_secure', 1); // Solo si usas HTTPS
+// NO usar ini_set para configuraciones de sesión si ya hay una sesión activa
+// En su lugar, configurar estas opciones en php.ini o .htaccess
 
 // Zona horaria
 date_default_timezone_set('America/Santiago');
