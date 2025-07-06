@@ -140,7 +140,6 @@ $productos = mysqli_query($conexion, $query);
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="dashboard.php">
-            <img src="img\Logo.jpg" alt="Casa Taller Cachagua" class="admin-navbar-logo">
             <span class="admin-brand-text">Admin</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">

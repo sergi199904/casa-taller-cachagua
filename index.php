@@ -29,128 +29,101 @@ require_once 'includes/functions.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="img/Logoo.png" as="image" type="image/png">
+    <link rel="preload" href="img/banners/1.jpeg" as="image" type="image/jpeg">
 </head>
 <body>
-    <!-- Header/Navbar -->
+    <!-- Header/Navbar con Logo Mejorado -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-        <!-- Logo en lugar del texto -->
-        <a class="navbar-brand" href="#home">
-            <img src="img\Logoo.png" alt="Casa Taller Cachagua" class="navbar-logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#ubicacion">Ubicación</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-            </ul>
+        <div class="container">
+            <!-- Logo mejorado con atributos optimizados -->
+            <a class="navbar-brand" href="#home" title="Casa Taller Cachagua - Inicio">
+                <img src="img/Logoo.png" 
+                     alt="Casa Taller Cachagua - Arte y Artesanía" 
+                     class="navbar-logo"
+                     loading="eager"
+                     fetchpriority="high">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ubicacion">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- Carrusel Promocional - ACTUALIZADO CON IMÁGENES DE CERÁMICA -->
-<section id="home" class="pt-5">
-    <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <!-- Carrusel Promocional - ACTUALIZADO CON IMÁGENES DE CERÁMICA -->
+    <section id="home" class="pt-5">
+        <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselBanners" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/banners/1.jpeg" class="d-block w-100" alt="Bowl de Cerámica Artesanal" loading="eager">
+                    <div class="carousel-caption">
+                        <h2>Cerámica Artesanal</h2>
+                        <p>Bowls únicos con diseños exclusivos hechos a mano</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banners/3.jpeg" class="d-block w-100" alt="Plato Decorativo de Cerámica" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Arte Funcional</h2>
+                        <p>Platos decorativos que combinan belleza y utilidad</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banners/7.jpeg" class="d-block w-100" alt="Recipiente de Cerámica Minimalista" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Diseño Minimalista</h2>
+                        <p>Recipientes con líneas puras y acabados naturales</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banners/9.jpeg" class="d-block w-100" alt="Vasija Multicolor Artesanal" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Explosión de Color</h2>
+                        <p>Vasijas que capturan la vibración de la naturaleza</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banners/10.jpeg" class="d-block w-100" alt="Vasija Grande Escultórica" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Piezas Únicas</h2>
+                        <p>Cada vasija cuenta su propia historia artesanal</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img\banners\1.jpeg" class="d-block w-100" alt="Bowl de Cerámica Artesanal" loading="eager">
-                <div class="carousel-caption">
-                    <h2>Cerámica Artesanal</h2>
-                    <p>Bowls únicos con diseños exclusivos hechos a mano</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img\banners\3.jpeg" class="d-block w-100" alt="Plato Decorativo de Cerámica" loading="lazy">
-                <div class="carousel-caption">
-                    <h2>Arte Funcional</h2>
-                    <p>Platos decorativos que combinan belleza y utilidad</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img\banners\7.jpeg" class="d-block w-100" alt="Recipiente de Cerámica Minimalista" loading="lazy">
-                <div class="carousel-caption">
-                    <h2>Diseño Minimalista</h2>
-                    <p>Recipientes con líneas puras y acabados naturales</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img\banners\9.jpeg" class="d-block w-100" alt="Vasija Multicolor Artesanal" loading="lazy">
-                <div class="carousel-caption">
-                    <h2>Explosión de Color</h2>
-                    <p>Vasijas que capturan la vibración de la naturaleza</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img\banners\10.jpeg" class="d-block w-100" alt="Vasija Grande Escultórica" loading="lazy">
-                <div class="carousel-caption">
-                    <h2>Piezas Únicas</h2>
-                    <p>Cada vasija cuenta su propia historia artesanal</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanners" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
-</section>
+    </section>
 
     <!-- Sección Nosotros -->
     <section id="nosotros" class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <div id="carouselNosotros" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carouselNosotros" data-bs-slide-to="4"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="img/general/Parte de Nosotros 1.jpeg" class="d-block w-100" alt="Casa Taller Cachagua" loading="lazy">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/general/Parte de Nosotros 2.jpg" class="d-block w-100" alt="Taller" loading="lazy">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/general/Parte de nosotros3.jpeg" class="d-block w-100" alt="Creaciones" loading="lazy">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/general/Parte de Nosotros 4.jpg" class="d-block w-100" alt="Arte" loading="lazy">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/general/Parte de Nosotros 5.jpg" class="d-block w-100" alt="Proceso" loading="lazy">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselNosotros" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselNosotros" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Siguiente</span>
-                        </button>
-                    </div>
-                </div>
                 <div class="col-lg-7 ps-lg-5">
                     <h2>¿Quienes somos?</h2>
                     <div class="nosotros-text">
@@ -392,7 +365,7 @@ require_once 'includes/functions.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     
-    <!-- Script adicional para asegurar funcionamiento del carrusel -->
+    <!-- Script adicional para asegurar funcionamiento del carrusel y logo -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Configuración específica para cada carrusel
@@ -421,9 +394,22 @@ require_once 'includes/functions.php';
                 });
             }
 
+            // Verificación del logo
+            const logo = document.querySelector('.navbar-logo');
+            if (logo) {
+                // Añadir clase loaded cuando el logo se carga
+                if (logo.complete) {
+                    logo.classList.add('loaded');
+                } else {
+                    logo.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                }
+            }
+
             // Mensaje de bienvenida con nueva paleta
             console.log('%c🎨 Casa Taller Cachagua', 'color: #4567B7; font-size: 20px; font-weight: bold;');
-            console.log('%cNueva identidad visual implementada', 'color: #8BC34A; font-size: 14px;');
+            console.log('%cLogo del navbar mejorado y optimizado', 'color: #8BC34A; font-size: 14px;');
             console.log('%cPaleta de colores fríos activa ✨', 'color: #7A288A; font-size: 12px;');
         });
 

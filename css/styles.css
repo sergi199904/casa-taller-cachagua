@@ -68,20 +68,24 @@ h4 { font-size: 1.5rem; font-weight: 600; }
 h5 { font-size: 1.25rem; font-weight: 600; }
 h6 { font-size: 1.1rem; font-weight: 600; }
 
+/* ======================================================
+   NAVBAR ACTUALIZADO CON LOGO MEJORADO
+   ====================================================== */
+
 /* Navbar actualizado con gradiente azul y logo */
 .navbar {
     background: var(--gradient-primary) !important;
     box-shadow: var(--shadow-medium);
     transition: all 0.3s ease;
-    padding: 1rem 0;
+    padding: 0.5rem 0; /* Reducido para balancear con logo más grande */
     backdrop-filter: blur(10px);
 }
 
-/* Navbar brand con logo */
+/* Navbar brand con logo mejorado */
 .navbar-brand {
     display: flex;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0; /* Padding mínimo */
     transition: all 0.3s ease;
     text-decoration: none;
 }
@@ -90,64 +94,185 @@ h6 { font-size: 1.1rem; font-weight: 600; }
     transform: scale(1.02);
 }
 
-/* Logo del navbar */
+/* LOGO PRINCIPAL MEJORADO - MÁS GRANDE */
 .navbar-logo {
-    height: 85px; /* Aumentado de 50px a 65px */
+    height: 105px; /* Aumentado significativamente de 85px */
     width: auto;
-    max-width: 400px; /* Aumentado de 200px a 280px */
+    max-width: 480px; /* Aumentado de 400px */
     transition: all 0.3s ease;
-    filter: brightness(1.1) contrast(1.1);
+    filter: brightness(1.1) contrast(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    object-fit: contain; /* Asegura que mantenga proporciones */
+    opacity: 0; /* Inicia oculto para animación de carga */
 }
 
-/* Efecto hover para el logo */
+/* Estado de carga del logo */
+.navbar-logo.loaded {
+    opacity: 1;
+}
+
+/* Efecto hover mejorado */
 .navbar-brand:hover .navbar-logo {
-    transform: scale(1.05);
-    filter: brightness(1.2) contrast(1.2);
+    transform: scale(1.03); /* Reducido de 1.05 para evitar overflow */
+    filter: brightness(1.2) contrast(1.2) drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
-/* Navbar brand con logo - AJUSTES DE PADDING */
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    padding: 0.3rem 0; /* Reducido ligeramente el padding vertical */
-    transition: all 0.3s ease;
-    text-decoration: none;
+/* Navbar cuando hace scroll - logo ligeramente más pequeño */
+.navbar.scrolled {
+    padding: 0.3rem 0;
+    box-shadow: var(--shadow-heavy);
 }
 
-.navbar-brand:hover {
-    transform: scale(1.02);
+.navbar.scrolled .navbar-logo {
+    height: 85px; /* Logo ligeramente más pequeño al hacer scroll */
+    max-width: 380px;
 }
 
-/* Ajustes responsive para el logo - TAMAÑOS AUMENTADOS */
-@media (max-width: 768px) {
-    .navbar-logo {
-        height: 55px; /* Aumentado de 40px a 55px */
-        max-width: 220px; /* Aumentado de 160px a 220px */
+/* ======================================================
+   CLASES ADICIONALES PARA CONTROL DEL LOGO
+   ====================================================== */
+
+/* Clases específicas por dispositivo */
+.navbar-logo.logo-desktop {
+    height: 105px;
+    max-width: 480px;
+}
+
+.navbar-logo.logo-tablet {
+    height: 80px;
+    max-width: 380px;
+}
+
+.navbar-logo.logo-mobile {
+    height: 70px;
+    max-width: 300px;
+}
+
+/* Variantes de tamaño del logo */
+.navbar-logo.size-small {
+    height: 75px;
+    max-width: 320px;
+}
+
+.navbar-logo.size-medium {
+    height: 95px;
+    max-width: 420px;
+}
+
+.navbar-logo.size-large {
+    height: 115px;
+    max-width: 520px;
+}
+
+.navbar-logo.size-extra-large {
+    height: 135px;
+    max-width: 620px;
+}
+
+/* Efectos especiales para el logo */
+.navbar-logo.glow-effect {
+    filter: brightness(1.1) contrast(1.1) drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.navbar-logo.sharp-effect {
+    filter: brightness(1.2) contrast(1.3) saturate(1.1);
+}
+
+/* Animación de entrada para el logo */
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-@media (max-width: 576px) {
-    .navbar-logo {
-        height: 48px; /* Aumentado de 35px a 48px */
-        max-width: 180px; /* Aumentado de 140px a 180px */
-    }
+.navbar-logo.animate-in {
+    animation: logoFadeIn 0.6s ease-out;
 }
 
-/* Ajuste adicional para el navbar para acomodar el logo más grande */
-.navbar {
-    background: var(--gradient-primary) !important;
-    box-shadow: var(--shadow-medium);
-    transition: all 0.3s ease;
-    padding: 0.8rem 0; /* Reducido ligeramente para compensar el logo más grande */
-    backdrop-filter: blur(10px);
-}
+/* ======================================================
+   RESPONSIVE PARA LOGO MEJORADO
+   ====================================================== */
 
-/* Carrusel Principal */
+/* Asegurar que el contenido no se superponga con el navbar más alto */
 #carouselBanners {
-    margin-top: 76px;
+    margin-top: 95px; /* Aumentado de 76px para acomodar navbar más alto */
     padding: 0 40px;
 }
 
+/* Tabletas (768px - 991px) */
+@media (max-width: 991px) {
+    .navbar-logo {
+        height: 80px; /* Aumentado de 55px */
+        max-width: 380px; /* Aumentado de 220px */
+    }
+    
+    .navbar {
+        padding: 0.4rem 0;
+    }
+    
+    .navbar.scrolled .navbar-logo {
+        height: 70px;
+        max-width: 320px;
+    }
+    
+    #carouselBanners {
+        margin-top: 85px;
+    }
+}
+
+/* Móviles grandes (577px - 768px) */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 70px; /* Aumentado de 55px */
+        max-width: 300px; /* Aumentado de 220px */
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar.scrolled .navbar-logo {
+        height: 60px;
+        max-width: 260px;
+    }
+    
+    #carouselBanners {
+        margin-top: 80px; /* Ajustado para móviles */
+        padding: 0 20px;
+    }
+}
+
+/* Móviles pequeños (hasta 576px) */
+@media (max-width: 576px) {
+    .navbar-logo {
+        height: 60px; /* Aumentado de 48px */
+        max-width: 240px; /* Aumentado de 180px */
+    }
+    
+    .navbar {
+        padding: 0.6rem 0;
+    }
+    
+    .navbar.scrolled .navbar-logo {
+        height: 50px;
+        max-width: 200px;
+    }
+    
+    #carouselBanners {
+        margin-top: 75px;
+        padding: 0 10px;
+    }
+}
+
+/* ======================================================
+   RESTO DEL CSS SIN CAMBIOS
+   ====================================================== */
+
+/* Carrusel Principal */
 #carouselBanners .carousel-item {
     height: 55vh;
     min-height: 380px; 
@@ -757,22 +882,11 @@ footer p {
     }
 }
 
-/* Responsive */
+/* Responsive adicional */
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.5rem; }
-    
-    /* Logo responsive en móvil */
-    .navbar-logo {
-        height: 40px;
-        max-width: 160px;
-    }
-    
-    #carouselBanners {
-        padding: 0 20px;
-        margin-top: 76px;
-    }
     
     #carouselBanners .carousel-item {
         height: 45vh;
@@ -853,16 +967,6 @@ footer p {
 }
 
 @media (max-width: 576px) {
-    /* Logo más pequeño en pantallas muy pequeñas */
-    .navbar-logo {
-        height: 35px;
-        max-width: 140px;
-    }
-    
-    #carouselBanners {
-        padding: 0 10px;
-    }
-    
     #carouselBanners .carousel-caption h2 {
         font-size: 1.5rem; 
     }
