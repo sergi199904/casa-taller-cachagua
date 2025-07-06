@@ -75,37 +75,25 @@ require_once 'includes/functions.php';
                 <div class="carousel-item active">
                     <img src="img/banners/1.jpeg" class="d-block w-100" alt="Bowl de Cerámica Artesanal" loading="eager">
                     <div class="carousel-caption">
-                        <h2>Cerámica Artesanal</h2>
-                        <p>Bowls únicos con diseños exclusivos hechos a mano</p>
+                        <h2>Bienvenidos a Casa Taller Cachagua</h2>
+                        <p>Arte y artesanía con amor desde la costa de Cachagua</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="img/banners/3.jpeg" class="d-block w-100" alt="Plato Decorativo de Cerámica" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Arte Funcional</h2>
-                        <p>Platos decorativos que combinan belleza y utilidad</p>
-                    </div>
+                    <!-- SIN carousel-caption -->
                 </div>
                 <div class="carousel-item">
                     <img src="img/banners/7.jpeg" class="d-block w-100" alt="Recipiente de Cerámica Minimalista" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Diseño Minimalista</h2>
-                        <p>Recipientes con líneas puras y acabados naturales</p>
-                    </div>
+                    <!-- SIN carousel-caption -->
                 </div>
                 <div class="carousel-item">
                     <img src="img/banners/9.jpeg" class="d-block w-100" alt="Vasija Multicolor Artesanal" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Explosión de Color</h2>
-                        <p>Vasijas que capturan la vibración de la naturaleza</p>
-                    </div>
+                    <!-- SIN carousel-caption -->
                 </div>
                 <div class="carousel-item">
                     <img src="img/banners/10.jpeg" class="d-block w-100" alt="Vasija Grande Escultórica" loading="lazy">
-                    <div class="carousel-caption">
-                        <h2>Piezas Únicas</h2>
-                        <p>Cada vasija cuenta su propia historia artesanal</p>
-                    </div>
+                    <!-- SIN carousel-caption -->
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanners" data-bs-slide="prev">
@@ -119,23 +107,22 @@ require_once 'includes/functions.php';
         </div>
     </section>
 
-    <!-- Sección Nosotros -->
+    <!-- Sección Nosotros - CENTRADA -->
     <section id="nosotros" class="py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-4 mb-lg-0">
-                <div class="col-lg-7 ps-lg-5">
-                    <h2>¿Quienes somos?</h2>
-                    <div class="nosotros-text">
-                        <p>Somos <span class="highlight">Francisca Castillo Carmona</span> y <span class="highlight">Álvaro Pérez Wilson</span>, pareja de artistas que hace años eligió la costa de Cachagua, comuna de Zapallar, para vivir y crear.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <h2 class="text-center mb-5">¿Quienes somos?</h2>
+                    <div class="nosotros-text text-center">
+                        <p class="mb-4">Somos <span class="highlight">Francisca Castillo Carmona</span> y <span class="highlight">Álvaro Pérez Wilson</span>, pareja de artistas que hace años eligió la costa de Cachagua, comuna de Zapallar, para vivir y crear.</p>
 
-                        <p>Álvaro es pintor con más de 30 años de oficio; sus paisajes capturan in situ la luz y la vida de nuestras playas y paseos costeros. También modela piezas en cerámica gres.</p>
+                        <p class="mb-4">Álvaro es pintor con más de 30 años de oficio; sus paisajes capturan in situ la luz y la vida de nuestras playas y paseos costeros. También modela piezas en cerámica gres.</p>
 
-                        <p>Francisca es artista autodidacta formada en talleres de México y Chile; se dedica a la xilografía y a la cerámica gres, siempre explorando texturas y colores vibrantes.</p>
+                        <p class="mb-4">Francisca es artista autodidacta formada en talleres de México y Chile; se dedica a la xilografía y a la cerámica gres, siempre explorando texturas y colores vibrantes.</p>
 
-                        <p>Nuestra <span class="accent-text">casa-taller</span> es un refugio donde el arte se ve, se respira y se vive cada día. Aquí producimos obras únicas, exhibimos nuestras colecciones y recibimos a quienes buscan piezas originales hechas a mano. Participamos en ferias y exposiciones locales e internacionales, llevando un pedacito de Cachagua a cada rincón.</p>
+                        <p class="mb-4">Nuestra <span class="accent-text">casa-taller</span> es un refugio donde el arte se ve, se respira y se vive cada día. Aquí producimos obras únicas, exhibimos nuestras colecciones y recibimos a quienes buscan piezas originales hechas a mano. Participamos en ferias y exposiciones locales e internacionales, llevando un pedacito de Cachagua a cada rincón.</p>
 
-                        <p><strong>Casa Taller Cachagua</strong> es nuestro proyecto de vida: un espacio que une hogar y creatividad, y que invita a conectar con la alegría y el valor de lo hecho con pasión y oficio.</p>
+                        <p class="mb-0"><strong>Casa Taller Cachagua</strong> es nuestro proyecto de vida: un espacio que une hogar y creatividad, y que invita a conectar con la alegría y el valor de lo hecho con pasión y oficio.</p>
                     </div>
                 </div>
             </div>
@@ -252,7 +239,7 @@ require_once 'includes/functions.php';
         </div>
     </section>
 
-    <!-- Ubicación -->
+    <!-- Ubicación - MAPA ACTUALIZADO -->
     <section id="ubicacion" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Encuéntranos</h2>
@@ -260,7 +247,7 @@ require_once 'includes/functions.php';
                 <div class="col-lg-8 mx-auto">
                     <div class="map-container">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.8977693686!2d-71.44918642346!3d-32.51125897377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689d45e7c75c7d5%3A0x9f4e2c8f0c3e5a5e!2sCachagua%2C%20Zapallar%2C%20Valpara%C3%ADso!5e0!3m2!1ses!2scl!4v1234567890" 
+                            src="https://maps.google.com/maps?q=32°34'32.8%22S+71°26'56.7%22W&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                             width="100%" 
                             height="300" 
                             style="border:0;" 
@@ -409,17 +396,15 @@ require_once 'includes/functions.php';
 
             // Mensaje de bienvenida con nueva paleta
             console.log('%c🎨 Casa Taller Cachagua', 'color: #4567B7; font-size: 20px; font-weight: bold;');
-            console.log('%cLogo del navbar mejorado y optimizado', 'color: #8BC34A; font-size: 14px;');
-            console.log('%cPaleta de colores fríos activa ✨', 'color: #7A288A; font-size: 12px;');
+            console.log('%cSección Nosotros centrada correctamente', 'color: #8BC34A; font-size: 14px;');
+            console.log('%cMapa actualizado con nueva ubicación', 'color: #7A288A; font-size: 12px;');
         });
 
         // Función para mostrar la paleta de colores en consola (desarrollo)
         if (window.location.hostname === 'localhost') {
-            console.group('🎨 Paleta de Colores Implementada');
-            console.log('%cPrimario: #4567B7', 'color: #4567B7; font-weight: bold; padding: 2px 5px; background: #E3F2FD;');
-            console.log('%cSecundario: #8BC34A', 'color: #8BC34A; font-weight: bold; padding: 2px 5px; background: #C8E6C9;');
-            console.log('%cAcento: #7A288A', 'color: #7A288A; font-weight: bold; padding: 2px 5px; background: #E1BEE7;');
-            console.log('%cFondo: #F0F4F8', 'color: #222222; font-weight: bold; padding: 2px 5px; background: #F0F4F8;');
+            console.group('🎨 Cambios Implementados');
+            console.log('%cSección Nosotros: ✅ Centrada', 'color: #4567B7; font-weight: bold;');
+            console.log('%cMapa: ✅ Actualizado con nueva URL', 'color: #8BC34A; font-weight: bold;');
             console.groupEnd();
         }
     </script>

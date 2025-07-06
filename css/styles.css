@@ -69,23 +69,23 @@ h5 { font-size: 1.25rem; font-weight: 600; }
 h6 { font-size: 1.1rem; font-weight: 600; }
 
 /* ======================================================
-   NAVBAR ACTUALIZADO CON LOGO MEJORADO
+   NAVBAR ACTUALIZADO - MÁS COMPACTO Y ENLACES BLANCOS
    ====================================================== */
 
-/* Navbar actualizado con gradiente azul y logo */
+/* Navbar actualizado con gradiente azul y logo MÁS COMPACTO */
 .navbar {
     background: var(--gradient-primary) !important;
     box-shadow: var(--shadow-medium);
     transition: all 0.3s ease;
-    padding: 0.5rem 0; /* Reducido para balancear con logo más grande */
+    padding: 0.25rem 0; /* REDUCIDO de 0.5rem a 0.25rem */
     backdrop-filter: blur(10px);
 }
 
-/* Navbar brand con logo mejorado */
+/* Navbar brand con logo REDUCIDO */
 .navbar-brand {
     display: flex;
     align-items: center;
-    padding: 0.2rem 0; /* Padding mínimo */
+    padding: 0.1rem 0; /* REDUCIDO de 0.2rem a 0.1rem */
     transition: all 0.3s ease;
     text-decoration: none;
 }
@@ -94,15 +94,16 @@ h6 { font-size: 1.1rem; font-weight: 600; }
     transform: scale(1.02);
 }
 
-/* LOGO PRINCIPAL MEJORADO - MÁS GRANDE */
+/* LOGO PRINCIPAL MÁS GRANDE - SIN AUMENTAR NAVBAR */
 .navbar-logo {
-    height: 105px; /* Aumentado significativamente de 85px */
+    height: 85px; /* AUMENTADO de 65px a 85px */
     width: auto;
-    max-width: 480px; /* Aumentado de 400px */
+    max-width: 400px; /* AUMENTADO de 300px a 400px */
     transition: all 0.3s ease;
     filter: brightness(1.1) contrast(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    object-fit: contain; /* Asegura que mantenga proporciones */
-    opacity: 0; /* Inicia oculto para animación de carga */
+    object-fit: contain;
+    opacity: 0;
+    margin: -10px 0; /* MARGEN NEGATIVO para que no aumente la altura del navbar */
 }
 
 /* Estado de carga del logo */
@@ -110,104 +111,110 @@ h6 { font-size: 1.1rem; font-weight: 600; }
     opacity: 1;
 }
 
-/* Efecto hover mejorado */
+/* Efecto hover REDUCIDO */
 .navbar-brand:hover .navbar-logo {
-    transform: scale(1.03); /* Reducido de 1.05 para evitar overflow */
+    transform: scale(1.03);
     filter: brightness(1.2) contrast(1.2) drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
-/* Navbar cuando hace scroll - logo ligeramente más pequeño */
+/* Navbar cuando hace scroll - logo MÁS PEQUEÑO */
 .navbar.scrolled {
-    padding: 0.3rem 0;
+    padding: 0.2rem 0; /* REDUCIDO */
     box-shadow: var(--shadow-heavy);
 }
 
 .navbar.scrolled .navbar-logo {
-    height: 85px; /* Logo ligeramente más pequeño al hacer scroll */
-    max-width: 380px;
+    height: 70px; /* AUMENTADO de 55px a 70px */
+    max-width: 320px; /* AUMENTADO */
+    margin: -8px 0; /* MARGEN NEGATIVO REDUCIDO al hacer scroll */
+}
+
+/* Enlaces del navbar MEJORADOS - BLANCOS Y VISIBLES */
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* BLANCO PURO */
+    font-weight: 600; /* AUMENTADO de 500 a 600 */
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 8px; /* AUMENTADO de 5px a 8px */
+    padding: 0.5rem 1rem; /* AUMENTADO el padding */
+    font-size: 1rem; /* TAMAÑO ESPECÍFICO */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* SOMBRA PARA CONTRASTE */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #ffffff !important; /* MANTENER BLANCO */
+    background-color: rgba(255, 255, 255, 0.2); /* FONDO SEMI-TRANSPARENTE */
+    transform: translateY(-1px);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4); /* SOMBRA MÁS PRONUNCIADA */
+}
+
+.navbar-text {
+    color: #ffffff !important; /* BLANCO PURO */
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Navbar toggler para móvil */
+.navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ======================================================
-   CLASES ADICIONALES PARA CONTROL DEL LOGO
+   RESPONSIVE PARA NAVBAR REDUCIDO
    ====================================================== */
 
-/* Clases específicas por dispositivo */
-.navbar-logo.logo-desktop {
-    height: 105px;
-    max-width: 480px;
-}
-
-.navbar-logo.logo-tablet {
-    height: 80px;
-    max-width: 380px;
-}
-
-.navbar-logo.logo-mobile {
-    height: 70px;
-    max-width: 300px;
-}
-
-/* Variantes de tamaño del logo */
-.navbar-logo.size-small {
-    height: 75px;
-    max-width: 320px;
-}
-
-.navbar-logo.size-medium {
-    height: 95px;
-    max-width: 420px;
-}
-
-.navbar-logo.size-large {
-    height: 115px;
-    max-width: 520px;
-}
-
-.navbar-logo.size-extra-large {
-    height: 135px;
-    max-width: 620px;
-}
-
-/* Efectos especiales para el logo */
-.navbar-logo.glow-effect {
-    filter: brightness(1.1) contrast(1.1) drop-shadow(0 0 10px rgba(255,255,255,0.3));
-}
-
-.navbar-logo.sharp-effect {
-    filter: brightness(1.2) contrast(1.3) saturate(1.1);
-}
-
-/* Animación de entrada para el logo */
-@keyframes logoFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.navbar-logo.animate-in {
-    animation: logoFadeIn 0.6s ease-out;
-}
-
-/* ======================================================
-   RESPONSIVE PARA LOGO MEJORADO
-   ====================================================== */
-
-/* Asegurar que el contenido no se superponga con el navbar más alto */
+/* Asegurar que el contenido no se superponga con el navbar */
 #carouselBanners {
-    margin-top: 95px; /* Aumentado de 76px para acomodar navbar más alto */
-    padding: 0 40px;
+    margin-top: 75px;
+    padding: 0; /* ELIMINADO completamente el padding */
 }
 
 /* Tabletas (768px - 991px) */
 @media (max-width: 991px) {
     .navbar-logo {
-        height: 80px; /* Aumentado de 55px */
-        max-width: 380px; /* Aumentado de 220px */
+        height: 65px; /* AUMENTADO de 50px a 65px */
+        max-width: 300px; /* AUMENTADO de 240px a 300px */
+        margin: -8px 0; /* MARGEN NEGATIVO para tabletas */
+    }
+    
+    .navbar {
+        padding: 0.3rem 0;
+    }
+    
+    .navbar.scrolled .navbar-logo {
+        height: 55px; /* AUMENTADO de 45px a 55px */
+        max-width: 250px; /* AUMENTADO de 200px a 250px */
+        margin: -6px 0;
+    }
+    
+    #carouselBanners {
+        margin-top: 65px;
+        padding: 0; /* SIN padding en tablet */
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.95rem;
+        margin: 0 5px;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Móviles grandes (577px - 768px) */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 55px; /* AUMENTADO de 45px a 55px */
+        max-width: 250px; /* AUMENTADO de 200px a 250px */
+        margin: -6px 0; /* MARGEN NEGATIVO para móviles */
     }
     
     .navbar {
@@ -215,20 +222,42 @@ h6 { font-size: 1.1rem; font-weight: 600; }
     }
     
     .navbar.scrolled .navbar-logo {
-        height: 70px;
-        max-width: 320px;
+        height: 45px; /* AUMENTADO de 40px a 45px */
+        max-width: 200px; /* AUMENTADO de 180px a 200px */
+        margin: -4px 0;
     }
     
     #carouselBanners {
-        margin-top: 85px;
+        margin-top: 60px;
+        padding: 0; /* SIN padding en móvil */
+    }
+    
+    /* Menú móvil mejorado */
+    .navbar-nav {
+        text-align: center;
+        padding: 15px 0;
+        background: rgba(69, 103, 183, 0.95);
+        border-radius: 10px;
+        margin: 10px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .navbar-nav .nav-link {
+        color: #ffffff !important;
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 2px 0;
+        padding: 0.5rem 1rem;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
 }
 
-/* Móviles grandes (577px - 768px) */
-@media (max-width: 768px) {
+/* Móviles pequeños (hasta 576px) */
+@media (max-width: 576px) {
     .navbar-logo {
-        height: 70px; /* Aumentado de 55px */
-        max-width: 300px; /* Aumentado de 220px */
+        height: 50px; /* AUMENTADO de 40px a 50px */
+        max-width: 200px; /* AUMENTADO de 160px a 200px */
+        margin: -5px 0; /* MARGEN NEGATIVO para móviles pequeños */
     }
     
     .navbar {
@@ -236,35 +265,19 @@ h6 { font-size: 1.1rem; font-weight: 600; }
     }
     
     .navbar.scrolled .navbar-logo {
-        height: 60px;
-        max-width: 260px;
+        height: 40px; /* AUMENTADO de 35px a 40px */
+        max-width: 160px; /* AUMENTADO de 140px a 160px */
+        margin: -3px 0;
     }
     
     #carouselBanners {
-        margin-top: 80px; /* Ajustado para móviles */
-        padding: 0 20px;
-    }
-}
-
-/* Móviles pequeños (hasta 576px) */
-@media (max-width: 576px) {
-    .navbar-logo {
-        height: 60px; /* Aumentado de 48px */
-        max-width: 240px; /* Aumentado de 180px */
+        margin-top: 55px;
+        padding: 0; /* SIN padding en móvil pequeño */
     }
     
-    .navbar {
-        padding: 0.6rem 0;
-    }
-    
-    .navbar.scrolled .navbar-logo {
-        height: 50px;
-        max-width: 200px;
-    }
-    
-    #carouselBanners {
-        margin-top: 75px;
-        padding: 0 10px;
+    .navbar-nav .nav-link {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.8rem;
     }
 }
 
@@ -272,69 +285,55 @@ h6 { font-size: 1.1rem; font-weight: 600; }
    RESTO DEL CSS SIN CAMBIOS
    ====================================================== */
 
-/* Carrusel Principal */
+/* Carrusel Principal - SIN BORDES Y ALTURA AJUSTADA */
 #carouselBanners .carousel-item {
-    height: 55vh;
-    min-height: 380px; 
-    max-height: 550px; 
+    height: 65vh; /* AUMENTADO de 55vh a 65vh para más altura */
+    min-height: 450px; /* AUMENTADO de 380px a 450px */
+    max-height: 650px; /* AUMENTADO de 550px a 650px */
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--light-blue) 0%, var(--background-color) 100%);
-    border-radius: 20px;
+    background: var(--background-color);
+    border-radius: 0; /* ELIMINADO completamente el border-radius */
 }
 
 #carouselBanners .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
-    filter: brightness(0.95) contrast(1.05);
+    filter: none;
     display: block;
-    border-radius: 15px;
-    box-shadow: var(--shadow-light);
-    margin: 10px;
-    max-width: calc(100% - 20px);
-    max-height: calc(100% - 20px);
+    border-radius: 0; /* ELIMINADO completamente el border-radius */
+    box-shadow: none; /* ELIMINADO la sombra */
+    margin: 0; /* ELIMINADO el margen */
+    max-width: 100%; /* SIN restricciones de ancho */
+    max-height: 100%; /* SIN restricciones de altura */
 }
 
+/* ELIMINAR el overlay difuminado */
 #carouselBanners .carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        45deg,
-        rgba(69, 103, 183, 0.03) 0%, 
-        transparent 20%, 
-        transparent 80%, 
-        rgba(69, 103, 183, 0.03) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-    border-radius: 20px;
+    display: none;
 }
 
 #carouselBanners .carousel-inner {
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 0; /* ELIMINADO completamente el border-radius */
     overflow: hidden;
 }
 
 #carouselBanners .carousel-caption {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: rgba(0, 0, 0, 0.4); /* MÁS TRANSPARENTE - negro suave */
     padding: 20px 30px;
     border-radius: 12px;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px); /* MENOS blur para más transparencia */
     bottom: 10%; 
     max-width: 60%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10; 
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: var(--shadow-medium);
+    border: 1px solid rgba(255,255,255,0.2); /* BORDE MUY SUAVE */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* SOMBRA MÁS SUAVE */
 }
 
 #carouselBanners .carousel-caption h2 {
@@ -415,7 +414,7 @@ section h2 {
 }
 
 #nosotros h2 {
-    text-align: left;
+    text-align: center;
     color: var(--primary-color);
     font-size: 2.5rem;
     font-weight: 700;
@@ -423,135 +422,12 @@ section h2 {
     font-family: 'Open Sans', serif;
 }
 
-/* Carrusel de la sección nosotros */
-#carouselNosotros {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-medium);
-    width: 100%;
-    height: 500px;
-    border: 2px solid var(--light-blue);
-}
-
-#carouselNosotros .carousel-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-#carouselNosotros .carousel-item {
-    height: 500px;
-    position: relative;
-    width: 100%;
-}
-
-#carouselNosotros .carousel-item.active {
-    display: block;
-}
-
-#carouselNosotros .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(1.05) saturate(1.1);
-}
-
-/* Indicadores del carrusel nosotros */
-#carouselNosotros .carousel-indicators {
-    bottom: 10px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-right: 15%;
-    margin-bottom: 1rem;
-    margin-left: 15%;
-    list-style: none;
-}
-
-#carouselNosotros .carousel-indicators button {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0 4px;
-    background-color: var(--primary-color);
-    border: 2px solid var(--white);
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-#carouselNosotros .carousel-indicators button.active {
-    opacity: 1;
-    transform: scale(1.2);
-    background-color: var(--secondary-color);
-}
-
-/* Controles del carrusel nosotros */
-#carouselNosotros .carousel-control-prev,
-#carouselNosotros .carousel-control-next {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    padding: 0;
-    color: var(--white);
-    text-align: center;
-    background: linear-gradient(to right, rgba(69, 103, 183, 0.7), transparent);
-    border: 0;
-    opacity: 0.8;
-    transition: opacity 0.15s ease;
-}
-
-#carouselNosotros .carousel-control-next {
-    background: linear-gradient(to left, rgba(69, 103, 183, 0.7), transparent);
-}
-
-#carouselNosotros .carousel-control-prev {
-    left: 0;
-}
-
-#carouselNosotros .carousel-control-next {
-    right: 0;
-}
-
-#carouselNosotros .carousel-control-prev:hover,
-#carouselNosotros .carousel-control-next:hover {
-    opacity: 1;
-}
-
-#carouselNosotros .carousel-control-prev-icon,
-#carouselNosotros .carousel-control-next-icon {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 100% 100%;
-}
-
-#carouselNosotros .carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='m11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
-}
-
-#carouselNosotros .carousel-control-next-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='m4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
 /* Texto de la sección nosotros */
 .nosotros-text {
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--text-color);
-    text-align: left;
+    text-align: center;
     font-weight: 400;
 }
 
@@ -824,24 +700,51 @@ footer {
 }
 
 footer h5 {
-    color: var(--white);
+    color: var(--white) !important;
+    font-family: 'Open Sans', serif;
+    font-weight: 600;
+}
+
+footer h6 {
+    color: var(--white) !important;
     font-family: 'Open Sans', serif;
     font-weight: 600;
 }
 
 footer p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--white) !important;
+}
+
+footer .text-muted {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+footer .mb-0 {
+    color: var(--white) !important;
+}
+
+footer small {
+    color: var(--white) !important;
 }
 
 .social-links a {
     transition: all 0.3s ease;
     display: inline-block;
-    color: var(--white);
+    color: var(--white) !important;
 }
 
 .social-links a:hover {
     transform: scale(1.2);
-    color: var(--light-blue);
+    color: var(--light-blue) !important;
+}
+
+/* Asegurar que TODOS los elementos del footer sean blancos */
+footer * {
+    color: var(--white) !important;
+}
+
+footer .text-danger {
+    color: #ff6b6b !important; /* Solo el corazón mantiene color rojo */
 }
 
 /* Mensajes de alerta */
@@ -889,8 +792,8 @@ footer p {
     h3 { font-size: 1.5rem; }
     
     #carouselBanners .carousel-item {
-        height: 45vh;
-        min-height: 280px; 
+        height: 50vh; /* AUMENTADO de 45vh para móviles */
+        min-height: 350px; /* AUMENTADO de 280px */
     }
     
     #carouselBanners .carousel-caption {
@@ -907,26 +810,12 @@ footer p {
         font-size: 0.95rem;
     }
     
-    .navbar-nav .nav-link {
-        font-size: 1rem; 
-        margin: 0 8px;
-        padding: 0.4rem 0.6rem;
-    }
-    
     section {
         padding: 60px 0;
     }
     
     section h2 {
         font-size: 2rem;
-    }
-    
-    #carouselNosotros .carousel-item {
-        height: 350px; 
-    }
-    
-    #carouselNosotros {
-        height: 350px;
     }
     
     #nosotros h2 {
@@ -941,15 +830,6 @@ footer p {
     
     .producto-img-wrapper {
         height: 250px;
-    }
-    
-    .navbar-nav {
-        text-align: center;
-        padding: 20px 0;
-        background: rgba(69, 103, 183, 0.95);
-        border-radius: 10px;
-        margin: 10px;
-        backdrop-filter: blur(10px);
     }
     
     .admin-access-btn {
@@ -976,12 +856,8 @@ footer p {
     }
     
     #carouselBanners .carousel-item {
-        height: 40vh;
-        min-height: 250px;
-    }
-    
-    .navbar-nav .nav-link {
-        font-size: 0.95rem;
+        height: 45vh; /* AUMENTADO de 40vh para móviles pequeños */
+        min-height: 320px; /* AUMENTADO de 250px */
     }
     
     .filter-btn {
