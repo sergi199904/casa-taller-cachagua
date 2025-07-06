@@ -1324,3 +1324,346 @@ a:hover {
         --light-blue: #2a3f5f;
     }
 }
+
+
+/* ======================================================
+   SECCIÓN PROCESOS - NUEVA
+   ====================================================== */
+
+/* Estilos para la Sección Procesos */
+#procesos {
+    background-color: var(--white);
+    position: relative;
+}
+
+#procesos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(69, 103, 183, 0.02) 0%, 
+        rgba(139, 195, 74, 0.02) 50%, 
+        rgba(122, 40, 138, 0.02) 100%);
+    pointer-events: none;
+}
+
+.proceso-container {
+    position: relative;
+    z-index: 2;
+}
+
+.proceso-title {
+    color: var(--primary-color);
+    font-family: 'Open Sans', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.proceso-title i {
+    animation: flicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.proceso-step {
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.proceso-step:hover {
+    transform: translateY(-10px);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-primary);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-medium);
+    border: 4px solid var(--white);
+    z-index: 10;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.proceso-img-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 2rem 0 1.5rem;
+    background: var(--light-blue);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.proceso-step:hover .proceso-img-wrapper {
+    box-shadow: var(--shadow-heavy);
+    transform: scale(1.02);
+}
+
+.proceso-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.proceso-step:hover .proceso-img {
+    transform: scale(1.05);
+}
+
+.proceso-img-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg, 
+        rgba(69, 103, 183, 0.1) 0%, 
+        transparent 50%, 
+        rgba(139, 195, 74, 0.1) 100%
+    );
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.proceso-step:hover .proceso-img-wrapper::after {
+    opacity: 1;
+}
+
+.proceso-step-title {
+    color: var(--primary-color);
+    font-family: 'Open Sans', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proceso-step-desc {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+}
+
+/* Card de CTA final */
+.proceso-cta-card {
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 20px;
+    box-shadow: var(--shadow-heavy);
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.proceso-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.proceso-cta-card .card-title,
+.proceso-cta-card .card-text {
+    color: var(--white) !important;
+    position: relative;
+    z-index: 2;
+}
+
+.proceso-cta-card .card-title {
+    font-family: 'Open Sans', serif;
+    font-weight: 600;
+}
+
+.proceso-cta-card .btn {
+    background: var(--white);
+    color: var(--primary-color);
+    border: none;
+    font-weight: 600;
+    padding: 12px 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.proceso-cta-card .btn:hover {
+    background: var(--light-blue);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Líneas conectoras entre pasos (solo desktop) */
+@media (min-width: 992px) {
+    .proceso-step::before {
+        content: '';
+        position: absolute;
+        top: 25px;
+        right: -2rem;
+        width: 4rem;
+        height: 2px;
+        background: var(--gradient-secondary);
+        z-index: 1;
+    }
+    
+    /* Quitar línea del último paso de cada fila */
+    .proceso-step:nth-child(3)::before,
+    .proceso-step:nth-child(5)::before {
+        display: none;
+    }
+    
+    /* Línea vertical para conectar filas */
+    .proceso-step:nth-child(3)::after {
+        content: '';
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 4rem;
+        background: var(--gradient-secondary);
+        z-index: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .proceso-title {
+        font-size: 1.75rem;
+    }
+    
+    .proceso-img-wrapper {
+        height: 220px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .proceso-step-title {
+        font-size: 1.2rem;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .proceso-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .proceso-img-wrapper {
+        height: 200px;
+        margin: 1.5rem 0 1rem;
+    }
+    
+    .proceso-step {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .proceso-step-title {
+        font-size: 1.1rem;
+    }
+    
+    .proceso-step-desc {
+        font-size: 0.95rem;
+    }
+    
+    .proceso-cta-card .card-body {
+        padding: 2rem 1.5rem;
+    }
+    
+    .proceso-cta-card .card-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proceso-step {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.proceso-step:nth-child(1) { animation-delay: 0.1s; }
+.proceso-step:nth-child(2) { animation-delay: 0.2s; }
+.proceso-step:nth-child(3) { animation-delay: 0.3s; }
+.proceso-step:nth-child(4) { animation-delay: 0.4s; }
+.proceso-step:nth-child(5) { animation-delay: 0.5s; }
+
+/* Estados de hover mejorados */
+.proceso-step:hover .step-number {
+    background: var(--gradient-accent);
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: var(--shadow-heavy);
+}
+
+.proceso-step:hover .proceso-step-title {
+    color: var(--accent-color);
+}
+
+/* Efectos de scroll reveal */
+.proceso-step {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.proceso-step.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Shimmer animation para la card CTA */
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}

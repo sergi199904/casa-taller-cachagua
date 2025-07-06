@@ -128,6 +128,105 @@ require_once 'includes/functions.php';
             </div>
         </div>
     </section>
+    <!-- Sección Procesos - Insertar después de #nosotros -->
+    <section id="procesos" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">Nuestros Procesos</h2>
+                    <div class="text-center mb-5">
+                        <p class="lead text-muted">Descubre cómo creamos nuestras piezas únicas en cerámica gres</p>
+                    </div>
+                    
+                    <!-- Proceso: Piezas en Cerámica Gres -->
+                    <div class="proceso-container mb-5">
+                        <h3 class="text-center mb-4 proceso-title">
+                            <i class="fas fa-fire-alt text-primary me-2"></i>
+                            Piezas en Cerámica Gres
+                        </h3>
+                        
+                        <!-- Pasos del proceso -->
+                        <div class="row g-4">
+                            <!-- Paso 1: Eligiendo el esmalte -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="proceso-step text-center">
+                                    <div class="step-number">1</div>
+                                    <div class="proceso-img-wrapper">
+                                        <img src="img\Procesos\Paso 1.png" 
+                                             alt="Eligiendo el esmalte, pieza recién bizcochada" 
+                                             class="proceso-img"
+                                             loading="lazy">
+                                    </div>
+                                    <h5 class="proceso-step-title">Eligiendo el esmalte</h5>
+                                    <p class="proceso-step-desc">Pieza recién bizcochada lista para seleccionar el esmalte perfecto que le dará color y textura única.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Paso 2: Esmaltando -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="proceso-step text-center">
+                                    <div class="step-number">2</div>
+                                    <div class="proceso-img-wrapper">
+                                        <img src="img\Procesos\Paso 2.png" 
+                                             alt="Proceso de esmaltado de cerámica" 
+                                             class="proceso-img"
+                                             loading="lazy">
+                                    </div>
+                                    <h5 class="proceso-step-title">Esmaltando</h5>
+                                    <p class="proceso-step-desc">Aplicación cuidadosa del esmalte sobre la superficie, una técnica que requiere precisión y experiencia.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Paso 3: Esperando a entrar al horno -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="proceso-step text-center">
+                                    <div class="step-number">3</div>
+                                    <div class="proceso-img-wrapper">
+                                        <img src="img\Procesos\Paso 3.png" 
+                                             alt="Piezas esperando a entrar al horno de esmalte" 
+                                             class="proceso-img"
+                                             loading="lazy">
+                                    </div>
+                                    <h5 class="proceso-step-title">Esperando a entrar al horno</h5>
+                                    <p class="proceso-step-desc">Las piezas esmaltadas aguardan pacientemente su turno para la transformación final en el horno.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Paso 4: Listo horno esmalte -->
+                            <div class="col-lg-6 col-md-6">
+                                <div class="proceso-step text-center">
+                                    <div class="step-number">4</div>
+                                    <div class="proceso-img-wrapper">
+                                        <img src="img\Procesos\Paso 4.png" 
+                                             alt="Horno de esmalte listo para la cocción" 
+                                             class="proceso-img"
+                                             loading="lazy">
+                                    </div>
+                                    <h5 class="proceso-step-title">Listo horno esmalte</h5>
+                                    <p class="proceso-step-desc">El horno alcanza la temperatura perfecta para fusionar el esmalte con la cerámica en un proceso mágico.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Paso 5: Pieza saliendo del horno final -->
+                            <div class="col-lg-6 col-md-6">
+                                <div class="proceso-step text-center">
+                                    <div class="step-number">5</div>
+                                    <div class="proceso-img-wrapper">
+                                        <img src="img\Procesos\Paso 5.png" 
+                                             alt="Pieza de cerámica saliendo del horno terminada" 
+                                             class="proceso-img"
+                                             loading="lazy">
+                                    </div>
+                                    <h5 class="proceso-step-title">Pieza saliendo del horno final</h5>
+                                    <p class="proceso-step-desc">El momento culminante: la pieza emerge del horno transformada, revelando colores y texturas únicos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Galería de Productos -->
     <section id="productos" class="py-5 bg-light">

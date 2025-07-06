@@ -1,4 +1,4 @@
-// main.js - JavaScript Principal con validaciones mejoradas y logo optimizado
+// main.js - JavaScript Principal con validaciones mejoradas, logo optimizado y sección procesos
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -92,6 +92,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // ================================================
+    // ANIMACIONES AL HACER SCROLL
+    // ================================================
+    
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.fade-in');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+                element.classList.add('visible');
+            }
+        });
+    };
+    
+    // ================================================
+    // ANIMACIONES PARA SECCIÓN PROCESOS
+    // ================================================
+    
+    // Función para reveal de elementos al hacer scroll
+    function revealProcesoSteps() {
+        const procesoSteps = document.querySelectorAll('.proceso-step');
+        
+        procesoSteps.forEach((step, index) => {
+            const stepTop = step.getBoundingClientRect().top;
+            const stepBottom = step.getBoundingClientRect().bottom;
+            const windowHeight = window.innerHeight;
+            
+            if (stepTop < windowHeight * 0.8 && stepBottom > 0) {
+                setTimeout(() => {
+                    step.classList.add('revealed');
+                }, index * 100);
+            }
+        });
+    }
+    
     // Optimizar con requestAnimationFrame para mejor performance
     let ticking = false;
     
@@ -99,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!ticking) {
             requestAnimationFrame(() => {
                 handleNavbarScroll();
-                animateOnScroll(); // Combinar con animaciones
+                animateOnScroll();
+                revealProcesoSteps(); // Agregar animaciones de procesos
                 ticking = false;
             });
             ticking = true;
@@ -125,6 +164,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Smooth scroll específico para el botón CTA de procesos
+    const visitarBtn = document.querySelector('#procesos .btn[href="#contacto"]');
+    if (visitarBtn) {
+        visitarBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.querySelector('#contacto');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
 
     // ================================================
     // FILTRO DE PRODUCTOS MEJORADO
@@ -482,23 +536,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ================================================
-    // ANIMACIONES AL HACER SCROLL
-    // ================================================
-    
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.fade-in');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementBottom = element.getBoundingClientRect().bottom;
-            
-            if (elementTop < window.innerHeight && elementBottom > 0) {
-                element.classList.add('visible');
-            }
-        });
-    };
-
-    // ================================================
     // GESTIÓN DE CARRUSELES MEJORADA
     // ================================================
     
@@ -563,6 +600,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         productImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        // Lazy loading para imágenes de procesos
+        const procesoImages = document.querySelectorAll('.proceso-img');
+        procesoImages.forEach(img => {
             imageObserver.observe(img);
         });
     }
@@ -691,11 +734,13 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', debounce(() => {
         adjustLogoForDevice();
         animateOnScroll();
+        revealProcesoSteps();
     }, 250));
 
     // Ejecutar al cargar
     handleNavbarScroll();
     animateOnScroll();
+    revealProcesoSteps(); // Ejecutar reveal de procesos al cargar
 
     // Inicializar componentes
     initializeLogo();
@@ -721,6 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎨 Casa Taller Cachagua - Sistema inicializado correctamente');
     console.log('%c🖼️ Logo del navbar mejorado', 'color: #4567B7; font-size: 14px; font-weight: bold;');
     console.log('%c📱 Optimizaciones móvil activadas', 'color: #8BC34A; font-size: 12px;');
+    console.log('%c🔥 Sección Procesos inicializada correctamente', 'color: #7A288A; font-size: 12px; font-weight: bold;');
     
     // Mostrar información del logo en desarrollo
     if (window.location.hostname === 'localhost') {
@@ -733,6 +779,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Estado:', logo.complete ? 'Cargado' : 'Cargando...');
             console.groupEnd();
         }
+        
+        console.group('🔥 Información de Procesos');
+        console.log('Pasos detectados:', document.querySelectorAll('.proceso-step').length);
+        console.log('Animaciones de scroll:', 'Activadas');
+        console.log('CTA de contacto:', document.querySelector('#procesos .btn[href="#contacto"]') ? 'Configurado' : 'No encontrado');
+        console.groupEnd();
     }
 
     // ================================================
@@ -750,6 +802,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
+        // Función para probar animaciones de procesos
+        window.testProcesoAnimations = function() {
+            const steps = document.querySelectorAll('.proceso-step');
+            steps.forEach((step, index) => {
+                step.classList.remove('revealed');
+                setTimeout(() => {
+                    step.classList.add('revealed');
+                }, index * 200);
+            });
+            console.log('🔥 Animaciones de procesos ejecutadas');
+        };
+        
         console.log('%cPara ajustar el logo usa: adjustLogoSize("small/medium/large/extra-large")', 'color: #7A288A; font-style: italic;');
+        console.log('%cPara probar animaciones usa: testProcesoAnimations()', 'color: #7A288A; font-style: italic;');
     }
 });
