@@ -1,81 +1,258 @@
-/* admin.css - Estilos del Panel de Administración */
+/* admin.css - Estilos del Panel de Administración con Nueva Paleta y Logo */
 
-/* Variables */
+/* Importar fuentes consistentes */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Variables de la nueva paleta */
 :root {
-    --admin-primary: #2c3e50;
-    --admin-secondary: #34495e;
-    --admin-success: #27ae60;
-    --admin-warning: #f39c12;
-    --admin-danger: #e74c3c;
-    --admin-info: #3498db;
+    /* Paleta Principal - Colores Fríos */
+    --admin-primary: #4567B7; /* Azul principal */
+    --admin-secondary: #8BC34A; /* Verde secundario */
+    --admin-accent: #7A288A; /* Morado de acento */
+    --admin-background: #F0F4F8; /* Azul grisáceo claro */
+    --admin-text: #222222; /* Gris oscuro para texto */
+    --admin-text-light: #666666; /* Texto secundario */
+    
+    /* Colores de estado actualizados */
+    --admin-success: #4CAF50;
+    --admin-warning: #FF9800;
+    --admin-danger: #F44336;
+    --admin-info: var(--admin-primary);
+    
+    /* Colores complementarios */
+    --admin-white: #ffffff;
+    --admin-light-blue: #E3F2FD;
+    --admin-dark-blue: #1976D2;
+    --admin-light-green: #C8E6C9;
+    --admin-light-purple: #E1BEE7;
+    
+    /* Sombras actualizadas */
+    --admin-shadow-light: 0 2px 8px rgba(69, 103, 183, 0.1);
+    --admin-shadow-medium: 0 4px 20px rgba(69, 103, 183, 0.15);
+    --admin-shadow-heavy: 0 8px 30px rgba(69, 103, 183, 0.2);
+    
+    /* Gradientes */
+    --admin-gradient-primary: linear-gradient(135deg, var(--admin-primary), var(--admin-dark-blue));
+    --admin-gradient-secondary: linear-gradient(135deg, var(--admin-secondary), #4CAF50);
+    --admin-gradient-accent: linear-gradient(135deg, var(--admin-primary), var(--admin-accent));
 }
 
 /* Estilos generales */
 body {
-    background-color: #f5f5f5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--admin-background);
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--admin-text);
+    line-height: 1.6;
 }
 
-/* Navbar personalizado */
+/* Títulos con nueva tipografía */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--admin-primary);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Navbar personalizado con logo */
 .navbar-dark {
-    background-color: var(--admin-primary) !important;
+    background: var(--admin-gradient-primary) !important;
+    box-shadow: var(--admin-shadow-medium);
+    backdrop-filter: blur(10px);
 }
 
+/* Navbar brand con logo */
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--admin-white) !important;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: var(--admin-light-blue) !important;
+    transform: scale(1.02);
+}
+
+/* Logo del navbar admin */
+.admin-navbar-logo {
+    height: 35px;
+    width: auto;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    filter: brightness(1.1);
+}
+
+.navbar-brand:hover .admin-navbar-logo {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+/* Texto "Admin" junto al logo */
+.admin-brand-text {
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+/* Links del navbar */
+.navbar-nav .nav-link {
+    color: var(--admin-white) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 5px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--admin-light-blue) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.navbar-text {
+    color: var(--admin-white) !important;
 }
 
 /* Cards del dashboard */
 .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--admin-light-blue);
+    border-radius: 12px;
+    box-shadow: var(--admin-shadow-light);
+    transition: all 0.3s ease;
+    background: var(--admin-white);
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: var(--admin-shadow-medium);
 }
 
 /* Tarjetas de estadísticas */
-.bg-primary { background-color: var(--admin-info) !important; }
-.bg-success { background-color: var(--admin-success) !important; }
-.bg-warning { background-color: var(--admin-warning) !important; }
-.bg-danger { background-color: var(--admin-danger) !important; }
+.bg-primary { 
+    background: var(--admin-gradient-primary) !important; 
+    border: none;
+}
+
+.bg-success { 
+    background: var(--admin-gradient-secondary) !important; 
+    border: none;
+}
+
+.bg-warning { 
+    background: linear-gradient(135deg, var(--admin-warning), #F57C00) !important; 
+    border: none;
+}
+
+.bg-danger { 
+    background: linear-gradient(135deg, var(--admin-danger), #D32F2F) !important; 
+    border: none;
+}
+
+.bg-info { 
+    background: var(--admin-gradient-accent) !important; 
+    border: none;
+}
 
 .card-footer {
-    background-color: rgba(0,0,0,0.1);
-    border-top: none;
+    background-color: rgba(69, 103, 183, 0.05);
+    border-top: 1px solid var(--admin-light-blue);
+}
+
+.card-footer a {
+    color: var(--admin-white);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-footer a:hover {
+    color: var(--admin-light-blue);
+    text-decoration: underline;
+}
+
+/* Card headers */
+.card-header {
+    background: var(--admin-light-blue);
+    border-bottom: 1px solid var(--admin-light-blue);
+    color: var(--admin-primary);
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Formularios */
+.form-control,
+.form-select {
+    border: 2px solid var(--admin-light-blue);
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--admin-white);
+}
+
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--admin-info);
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 0.2rem rgba(69, 103, 183, 0.25);
+    background-color: var(--admin-white);
+}
+
+.form-label {
+    color: var(--admin-text);
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 0.5rem;
 }
 
 /* Tablas */
 .table {
-    background-color: white;
+    background-color: var(--admin-white);
+    font-family: 'Roboto', sans-serif;
 }
 
 .table thead th {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
+    background-color: var(--admin-light-blue);
+    border-bottom: 2px solid var(--admin-primary);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.875rem;
-    color: #495057;
+    color: var(--admin-primary);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(69, 103, 183, 0.05);
+}
+
+.table-mensajes th {
+    background-color: var(--admin-light-blue);
+    border-bottom: 2px solid var(--admin-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    color: var(--admin-primary);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-mensajes td {
+    vertical-align: middle;
+    padding: 12px 8px;
 }
 
 /* Botones personalizados */
 .btn {
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: 500;
     transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px 20px;
 }
 
 .btn:hover {
@@ -83,13 +260,110 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--admin-info);
-    border-color: var(--admin-info);
+    background: var(--admin-gradient-primary);
+    border: none;
+    color: var(--admin-white);
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
+    background: var(--admin-gradient-accent);
+    box-shadow: var(--admin-shadow-medium);
+    color: var(--admin-white);
+}
+
+.btn-secondary {
+    background: var(--admin-gradient-secondary);
+    border: none;
+    color: var(--admin-white);
+}
+
+.btn-secondary:hover {
+    background: var(--admin-secondary);
+    box-shadow: var(--admin-shadow-medium);
+    color: var(--admin-white);
+}
+
+.btn-success {
+    background-color: var(--admin-success);
+    border-color: var(--admin-success);
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}
+
+.btn-warning {
+    background-color: var(--admin-warning);
+    border-color: var(--admin-warning);
+    color: var(--admin-white);
+}
+
+.btn-warning:hover {
+    background-color: #F57C00;
+    border-color: #F57C00;
+    color: var(--admin-white);
+}
+
+.btn-danger {
+    background-color: var(--admin-danger);
+    border-color: var(--admin-danger);
+}
+
+.btn-danger:hover {
+    background-color: #D32F2F;
+    border-color: #D32F2F;
+}
+
+.btn-info {
+    background: var(--admin-gradient-accent);
+    border: none;
+    color: var(--admin-white);
+}
+
+.btn-info:hover {
+    background: var(--admin-primary);
+    color: var(--admin-white);
+}
+
+/* Botones outline */
+.btn-outline-primary {
+    color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+    color: var(--admin-white);
+}
+
+.btn-outline-secondary {
+    color: var(--admin-secondary);
+    border-color: var(--admin-secondary);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--admin-secondary);
+    border-color: var(--admin-secondary);
+    color: var(--admin-white);
+}
+
+.btn-outline-info {
+    color: var(--admin-info);
+    border-color: var(--admin-info);
+}
+
+.btn-outline-info:hover {
+    background-color: var(--admin-info);
+    border-color: var(--admin-info);
+    color: var(--admin-white);
+}
+
+/* Botones pequeños */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.875rem;
 }
 
 /* Login page */
@@ -97,18 +371,46 @@ body {
     min-height: 100vh !important;
 }
 
-/* Responsive */
+/* Responsive para admin y logo */
 @media (max-width: 768px) {
     .navbar-nav {
-        padding: 10px 0;
+        padding: 15px 0;
+        background: rgba(69, 103, 183, 0.95);
+        border-radius: 10px;
+        margin: 10px;
+        backdrop-filter: blur(10px);
     }
     
     .card-body {
-        padding: 1rem;
+        padding: 1.25rem;
     }
     
     .table {
         font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    /* Logo responsive en admin móvil */
+    .admin-navbar-logo {
+        height: 30px;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .admin-brand-text {
+        display: none; /* Ocultar texto en móvil para más espacio */
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-navbar-logo {
+        height: 25px;
     }
 }
 
@@ -126,12 +428,41 @@ body {
 
 .alert {
     animation: fadeIn 0.5s ease;
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--admin-shadow-light);
+    font-family: 'Roboto', sans-serif;
+}
+
+.alert-success {
+    background-color: var(--admin-light-green);
+    color: var(--admin-success);
+    border-left: 4px solid var(--admin-success);
+}
+
+.alert-danger {
+    background-color: #FFEBEE;
+    color: var(--admin-danger);
+    border-left: 4px solid var(--admin-danger);
+}
+
+.alert-info {
+    background-color: var(--admin-light-blue);
+    color: var(--admin-primary);
+    border-left: 4px solid var(--admin-primary);
+}
+
+.alert-warning {
+    background-color: #FFF3E0;
+    color: var(--admin-warning);
+    border-left: 4px solid var(--admin-warning);
 }
 
 /* Imagen de producto en tabla */
 .table img {
-    border-radius: 5px;
+    border-radius: 6px;
     object-fit: cover;
+    border: 2px solid var(--admin-light-blue);
 }
 
 /* Estados de hover para iconos */
@@ -146,3 +477,118 @@ body {
 .fa-trash:hover {
     color: var(--admin-danger);
 }
+
+.fa-eye:hover {
+    color: var(--admin-info);
+}
+
+.fa-copy:hover {
+    color: var(--admin-secondary);
+}
+
+.fa-reply:hover {
+    color: var(--admin-primary);
+}
+
+/* Mensajes específicos del dashboard */
+.mensaje-completo {
+    max-width: 400px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
+}
+
+.mensaje-preview {
+    cursor: pointer;
+    color: var(--admin-primary);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.mensaje-preview:hover {
+    color: var(--admin-accent);
+}
+
+.mensaje-card {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--admin-light-blue);
+    border-radius: 8px;
+}
+
+.badge-nuevo {
+    background: var(--admin-gradient-secondary);
+    color: var(--admin-white);
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.email-link {
+    color: var(--admin-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.email-link:hover {
+    color: var(--admin-accent);
+    text-decoration: underline;
+}
+
+/* Badges */
+.badge {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+.badge.bg-secondary {
+    background-color: var(--admin-secondary) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--admin-primary) !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background: var(--admin-white);
+    border: 1px solid var(--admin-light-blue);
+    border-radius: 8px;
+    box-shadow: var(--admin-shadow-medium);
+}
+
+.dropdown-item {
+    color: var(--admin-text);
+    font-family: 'Roboto', sans-serif;
+}
+
+.dropdown-item:hover {
+    background-color: var(--admin-light-blue);
+    color: var(--admin-primary);
+}
+
+/* Modal específico para admin */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: var(--admin-shadow-heavy);
+    background: var(--admin-white);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--admin-light-blue);
+    background: var(--admin-light-blue);
+}
+
+.modal-title {
+    color: var(--admin-primary);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--admin-light-blue);
+}
+
+/*

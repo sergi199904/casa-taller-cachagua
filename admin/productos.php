@@ -137,43 +137,44 @@ $productos = mysqli_query($conexion, $query);
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-palette"></i> Casa Taller Admin
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarAdmin">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
-                            <i class="fas fa-tachometer-alt"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="productos.php">
-                            <i class="fas fa-box"></i> Productos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php" target="_blank">
-                            <i class="fas fa-eye"></i> Ver Sitio
-                        </a>
-                    </li>
-                </ul>
-                <div class="navbar-nav">
-                    <span class="navbar-text me-3">
-                        <i class="fas fa-user"></i> <?php echo $_SESSION['admin_nombre']; ?>
-                    </span>
-                    <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.php">
+            <img src="img\Logo.jpg" alt="Casa Taller Cachagua" class="admin-navbar-logo">
+            <span class="admin-brand-text">Admin</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarAdmin">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.php">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
                     </a>
-                </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="productos.php">
+                        <i class="fas fa-box"></i> Productos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php" target="_blank">
+                        <i class="fas fa-eye"></i> Ver Sitio
+                    </a>
+                </li>
+            </ul>
+            <div class="navbar-nav">
+                <span class="navbar-text me-3">
+                    <i class="fas fa-user"></i> <?php echo isset($_SESSION['admin_nombre']) ? htmlspecialchars($_SESSION['admin_nombre']) : 'Admin'; ?>
+                </span>
+                <a class="nav-link" href="logout.php">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Contenido Principal -->
     <div class="container-fluid py-4">

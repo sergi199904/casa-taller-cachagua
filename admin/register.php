@@ -52,14 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+<!-- Actualizar la sección <head> en admin/login.php y admin/register.php -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Casa Taller Cachagua Admin</title>
+    <title>Login - Casa Taller Cachagua Admin</title>
     
     <!-- Meta tags -->
     <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Registro de administrador Casa Taller Cachagua">
+    <meta name="description" content="Panel de administración Casa Taller Cachagua">
+    
+    <!-- Google Fonts - Nueva Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,13 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Reutilizar los mismos estilos del login */
+        /* Actualizar las variables CSS del login con la nueva paleta */
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --primary-gradient: linear-gradient(135deg, #4567B7 0%, #1976D2 100%);
+            --secondary-gradient: linear-gradient(135deg, #8BC34A 0%, #4CAF50 100%);
+            --accent-gradient: linear-gradient(135deg, #4567B7 0%, #7A288A 100%);
+            --background-color: #F0F4F8;
+            --text-color: #222222;
+            --white: #ffffff;
+            --light-blue: #E3F2FD;
+            --shadow: 0 15px 35px rgba(69, 103, 183, 0.1);
+            --shadow-hover: 0 25px 50px rgba(69, 103, 183, 0.15);
         }
 
         * {
@@ -88,13 +98,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             overflow-x: hidden;
             position: relative;
             padding: 20px;
         }
 
-        /* Fondo animado */
+        /* Fondo animado actualizado con colores fríos */
         body::before {
             content: '';
             position: fixed;
@@ -103,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(69, 103, 183, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 195, 74, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(122, 40, 138, 0.3) 0%, transparent 50%);
             animation: backgroundMove 20s ease-in-out infinite;
             z-index: 0;
         }
@@ -116,14 +126,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             66% { transform: translateX(20px) translateY(20px); }
         }
 
-        .register-container {
+        .login-container, .register-container {
             position: relative;
             z-index: 10;
             width: 100%;
             max-width: 450px;
         }
 
-        .register-card {
+        .login-card, .register-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 24px;
@@ -133,20 +143,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .register-card:hover {
+        .login-card:hover, .register-card:hover {
             box-shadow: var(--shadow-hover);
             transform: translateY(-5px);
         }
 
-        .register-header {
-            background: var(--secondary-gradient);
+        .login-header, .register-header {
+            background: var(--primary-gradient);
             padding: 3rem 2rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .register-header::before {
+        .register-header {
+            background: var(--accent-gradient);
+        }
+
+        .login-header::before, .register-header::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -163,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        .register-icon {
+        .login-icon, .register-icon {
             width: 80px;
             height: 80px;
             background: rgba(255, 255, 255, 0.2);
@@ -178,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             z-index: 5;
         }
 
-        .register-icon i {
+        .login-icon i, .register-icon i {
             font-size: 2.5rem;
             color: white;
             animation: iconPulse 2s ease-in-out infinite;
@@ -189,16 +203,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             50% { transform: scale(1.1); }
         }
 
-        .register-title {
+        .login-title, .register-title {
             color: white;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             position: relative;
             z-index: 5;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        .register-subtitle {
+        .login-subtitle, .register-subtitle {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             margin-bottom: 0;
@@ -206,13 +221,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             z-index: 5;
         }
 
-        .register-body {
+        .login-body, .register-body {
             padding: 2.5rem 2rem;
         }
 
         .tab-container {
             display: flex;
-            background: #f8f9fa;
+            background: var(--light-blue);
             border-radius: 12px;
             padding: 4px;
             margin-bottom: 2rem;
@@ -234,12 +249,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .tab-button.active {
             background: white;
             color: #495057;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(69, 103, 183, 0.1);
         }
 
         .tab-button:hover {
@@ -253,25 +269,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .form-control {
-            background: rgba(248, 249, 250, 0.8);
+            background: var(--light-blue);
             border: 2px solid transparent;
             border-radius: 12px;
             padding: 1rem 1.25rem;
             font-size: 1rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            font-family: 'Roboto', sans-serif;
         }
 
         .form-control:focus {
             background: white;
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+            border-color: #4567B7;
+            box-shadow: 0 0 0 0.2rem rgba(69, 103, 183, 0.15);
             transform: translateY(-2px);
         }
 
         .form-label {
-            color: #495057;
+            color: var(--text-color);
             font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .password-toggle {
@@ -291,10 +309,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: #495057;
         }
 
-        .btn-register {
+        .btn-login, .btn-register {
             width: 100%;
             padding: 1rem;
-            background: var(--secondary-gradient);
+            background: var(--primary-gradient);
             border: none;
             border-radius: 12px;
             color: white;
@@ -303,9 +321,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        .btn-register::before {
+        .btn-register {
+            background: var(--accent-gradient);
+        }
+
+        .btn-login::before, .btn-register::before {
             content: '';
             position: absolute;
             top: 0;
@@ -316,31 +339,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             transition: left 0.5s;
         }
 
-        .btn-register:hover::before {
+        .btn-login:hover::before, .btn-register:hover::before {
             left: 100%;
         }
 
-        .btn-register:hover {
+        .btn-login:hover, .btn-register:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+            box-shadow: 0 8px 25px rgba(69, 103, 183, 0.3);
         }
 
-        .register-footer {
+        .login-footer, .register-footer {
             padding: 1.5rem 2rem 2rem;
             text-align: center;
-            background: rgba(248, 249, 250, 0.5);
+            background: var(--light-blue);
         }
 
-        .register-footer a {
-            color: #667eea;
+        .login-footer a, .register-footer a {
+            color: #4567B7;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .register-footer a:hover {
-            color: #764ba2;
+        .login-footer a:hover, .register-footer a:hover {
+            color: #7A288A;
             text-decoration: underline;
+        }
+
+        .checkbox-custom {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .checkbox-custom input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkbox-custom .checkmark {
+            width: 20px;
+            height: 20px;
+            background: var(--light-blue);
+            border: 2px solid #dee2e6;
+            border-radius: 4px;
+            margin-right: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .checkbox-custom input[type="checkbox"]:checked + .checkmark {
+            background: var(--primary-gradient);
+            border-color: #4567B7;
+        }
+
+        .checkbox-custom input[type="checkbox"]:checked + .checkmark::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .alert {
@@ -349,24 +411,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 1rem 1.5rem;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(10px);
+            font-family: 'Roboto', sans-serif;
         }
 
         .alert-danger {
-            background: rgba(220, 53, 69, 0.1);
+            background: rgba(244, 67, 54, 0.1);
             color: #721c24;
-            border-left: 4px solid #dc3545;
+            border-left: 4px solid #F44336;
         }
 
         .alert-success {
-            background: rgba(40, 167, 69, 0.1);
+            background: rgba(76, 175, 80, 0.1);
             color: #155724;
-            border-left: 4px solid #28a745;
+            border-left: 4px solid #4CAF50;
         }
 
         .form-text {
             color: #6c757d;
             font-size: 0.875rem;
             margin-top: 0.25rem;
+            font-family: 'Roboto', sans-serif;
         }
 
         /* Responsive */
@@ -375,24 +439,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 padding: 10px;
             }
             
-            .register-header {
+            .login-header, .register-header {
                 padding: 2rem 1.5rem 1.5rem;
             }
             
-            .register-body {
+            .login-body, .register-body {
                 padding: 2rem 1.5rem;
             }
             
-            .register-icon {
+            .login-icon, .register-icon {
                 width: 60px;
                 height: 60px;
             }
             
-            .register-icon i {
+            .login-icon i, .register-icon i {
                 font-size: 2rem;
             }
             
-            .register-title {
+            .login-title, .register-title {
                 font-size: 1.5rem;
             }
         }
@@ -413,18 +477,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-        /* Validación visual */
+        /* Validación visual mejorada */
         .form-control.is-valid {
-            border-color: #28a745;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='m2.3 6.73 0.13-.02 1.92-2.23L5.8 3 4.38 4.51 2.12 6.64z'/%3e%3c/svg%3e");
+            border-color: #4CAF50;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%234CAF50' d='m2.3 6.73 0.13-.02 1.92-2.23L5.8 3 4.38 4.51 2.12 6.64z'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right calc(0.375em + 0.1875rem) center;
             background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
         }
 
         .form-control.is-invalid {
-            border-color: #dc3545;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 5.8 0.4-0.4 0.4 0.4'/%3e%3c/svg%3e");
+            border-color: #F44336;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23F44336'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 5.8 0.4-0.4 0.4 0.4'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right calc(0.375em + 0.1875rem) center;
             background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
@@ -432,16 +496,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .invalid-feedback {
             display: block;
-            color: #dc3545;
+            color: #F44336;
             font-size: 0.875rem;
             margin-top: 0.25rem;
+            font-family: 'Roboto', sans-serif;
         }
 
         .valid-feedback {
             display: block;
-            color: #28a745;
+            color: #4CAF50;
             font-size: 0.875rem;
             margin-top: 0.25rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Focus visible mejorado */
+        .btn:focus-visible,
+        .form-control:focus-visible {
+            outline: 2px solid #4567B7;
+            outline-offset: 2px;
+        }
+
+        /* Selección de texto */
+        ::selection {
+            background: #4567B7;
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: #4567B7;
+            color: white;
+        }
+
+        /* Modo de alto contraste */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-gradient: linear-gradient(135deg, #003d82 0%, #001f5c 100%);
+                --text-color: #000000;
+                --background-color: #ffffff;
+            }
+        }
+
+        /* Preferencia de movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
