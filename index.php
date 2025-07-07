@@ -128,7 +128,7 @@ require_once 'includes/functions.php';
             </div>
         </div>
     </section>
-    <!-- Sección Procesos - Insertar después de #nosotros -->
+    <!-- Sección Procesos - RUTAS CORREGIDAS -->
     <section id="procesos" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -145,17 +145,19 @@ require_once 'includes/functions.php';
                             Piezas en Cerámica Gres
                         </h3>
                         
-                        <!-- Pasos del proceso -->
+                        <!-- Pasos del proceso - RUTAS CORREGIDAS -->
                         <div class="row g-4">
                             <!-- Paso 1: Eligiendo el esmalte -->
                             <div class="col-lg-4 col-md-6">
                                 <div class="proceso-step text-center">
                                     <div class="step-number">1</div>
                                     <div class="proceso-img-wrapper">
+        
                                         <img src="img\Procesos\Paso 1.png" 
                                              alt="Eligiendo el esmalte, pieza recién bizcochada" 
                                              class="proceso-img"
-                                             loading="lazy">
+                                             loading="lazy"
+                                             style="opacity: 1 !important; visibility: visible !important;">
                                     </div>
                                     <h5 class="proceso-step-title">Eligiendo el esmalte</h5>
                                     <p class="proceso-step-desc">Pieza recién bizcochada lista para seleccionar el esmalte perfecto que le dará color y textura única.</p>
@@ -167,10 +169,12 @@ require_once 'includes/functions.php';
                                 <div class="proceso-step text-center">
                                     <div class="step-number">2</div>
                                     <div class="proceso-img-wrapper">
+                                     
                                         <img src="img\Procesos\Paso 2.png" 
                                              alt="Proceso de esmaltado de cerámica" 
                                              class="proceso-img"
-                                             loading="lazy">
+                                             loading="lazy"
+                                             style="opacity: 1 !important; visibility: visible !important;">
                                     </div>
                                     <h5 class="proceso-step-title">Esmaltando</h5>
                                     <p class="proceso-step-desc">Aplicación cuidadosa del esmalte sobre la superficie, una técnica que requiere precisión y experiencia.</p>
@@ -182,10 +186,12 @@ require_once 'includes/functions.php';
                                 <div class="proceso-step text-center">
                                     <div class="step-number">3</div>
                                     <div class="proceso-img-wrapper">
+                                
                                         <img src="img\Procesos\Paso 3.png" 
                                              alt="Piezas esperando a entrar al horno de esmalte" 
                                              class="proceso-img"
-                                             loading="lazy">
+                                             loading="lazy"
+                                             style="opacity: 1 !important; visibility: visible !important;">
                                     </div>
                                     <h5 class="proceso-step-title">Esperando a entrar al horno</h5>
                                     <p class="proceso-step-desc">Las piezas esmaltadas aguardan pacientemente su turno para la transformación final en el horno.</p>
@@ -197,10 +203,12 @@ require_once 'includes/functions.php';
                                 <div class="proceso-step text-center">
                                     <div class="step-number">4</div>
                                     <div class="proceso-img-wrapper">
+                                       
                                         <img src="img\Procesos\Paso 4.png" 
                                              alt="Horno de esmalte listo para la cocción" 
                                              class="proceso-img"
-                                             loading="lazy">
+                                             loading="lazy"
+                                             style="opacity: 1 !important; visibility: visible !important;">
                                     </div>
                                     <h5 class="proceso-step-title">Listo horno esmalte</h5>
                                     <p class="proceso-step-desc">El horno alcanza la temperatura perfecta para fusionar el esmalte con la cerámica en un proceso mágico.</p>
@@ -212,16 +220,19 @@ require_once 'includes/functions.php';
                                 <div class="proceso-step text-center">
                                     <div class="step-number">5</div>
                                     <div class="proceso-img-wrapper">
+                                     
                                         <img src="img\Procesos\Paso 5.png" 
                                              alt="Pieza de cerámica saliendo del horno terminada" 
                                              class="proceso-img"
-                                             loading="lazy">
+                                             loading="lazy"
+                                             style="opacity: 1 !important; visibility: visible !important;">
                                     </div>
                                     <h5 class="proceso-step-title">Pieza saliendo del horno final</h5>
                                     <p class="proceso-step-desc">El momento culminante: la pieza emerge del horno transformada, revelando colores y texturas únicos.</p>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

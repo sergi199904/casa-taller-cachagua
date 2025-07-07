@@ -1372,15 +1372,26 @@ a:hover {
     50% { opacity: 0.7; }
 }
 
+/* ✅ FIX PRINCIPAL: Elementos VISIBLES por defecto */
 .proceso-step {
     position: relative;
     transition: all 0.3s ease;
     padding: 1.5rem;
     height: 100%;
+    /* CAMBIADO: Ahora son visibles por defecto */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .proceso-step:hover {
     transform: translateY(-10px);
+}
+
+/* Animación opcional cuando se agrega la clase revealed */
+.proceso-step.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 .step-number {
@@ -1629,16 +1640,6 @@ a:hover {
     }
 }
 
-.proceso-step {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-.proceso-step:nth-child(1) { animation-delay: 0.1s; }
-.proceso-step:nth-child(2) { animation-delay: 0.2s; }
-.proceso-step:nth-child(3) { animation-delay: 0.3s; }
-.proceso-step:nth-child(4) { animation-delay: 0.4s; }
-.proceso-step:nth-child(5) { animation-delay: 0.5s; }
-
 /* Estados de hover mejorados */
 .proceso-step:hover .step-number {
     background: var(--gradient-accent);
@@ -1650,20 +1651,19 @@ a:hover {
     color: var(--accent-color);
 }
 
-/* Efectos de scroll reveal */
-.proceso-step {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
-}
-
-.proceso-step.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Shimmer animation para la card CTA */
 @keyframes shimmer {
     0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
     50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* 🚨 FORCE SHOW PROCESOS - OVERRIDE TEMPORAL */
+.proceso-step,
+.proceso-img,
+.proceso-img-wrapper,
+.proceso-step.revealed {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    display: block !important;
 }

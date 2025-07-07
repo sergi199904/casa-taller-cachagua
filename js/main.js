@@ -1,4 +1,4 @@
-// main.js - JavaScript Principal con validaciones mejoradas, logo optimizado y sección procesos
+// main.js - JavaScript Principal con validaciones mejoradas, logo optimizado y sección procesos CORREGIDO
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // ================================================
-    // ANIMACIONES PARA SECCIÓN PROCESOS
+    // ANIMACIONES PARA SECCIÓN PROCESOS - CORREGIDO
     // ================================================
     
-    // Función para reveal de elementos al hacer scroll
+    // Función para reveal de elementos al hacer scroll - MEJORADA
     function revealProcesoSteps() {
         const procesoSteps = document.querySelectorAll('.proceso-step');
         
@@ -122,12 +122,47 @@ document.addEventListener('DOMContentLoaded', function() {
             const stepBottom = step.getBoundingClientRect().bottom;
             const windowHeight = window.innerHeight;
             
-            if (stepTop < windowHeight * 0.8 && stepBottom > 0) {
+            // ✅ Condición más flexible para mostrar elementos
+            if (stepTop < windowHeight * 0.9 && stepBottom > 0) {
                 setTimeout(() => {
                     step.classList.add('revealed');
                 }, index * 100);
             }
         });
+    }
+    
+    // ✅ NUEVO: Función para mostrar procesos inmediatamente
+    function showProcesoStepsImmediately() {
+        const procesoSteps = document.querySelectorAll('.proceso-step');
+        procesoSteps.forEach((step, index) => {
+            setTimeout(() => {
+                step.classList.add('revealed');
+                step.style.opacity = '1';
+                step.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+        console.log('🔥 Procesos mostrados inmediatamente');
+    }
+    
+    // ✅ NUEVO: Observer para la sección procesos
+    function initProcesoObserver() {
+        const procesoSection = document.getElementById('procesos');
+        if (procesoSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        revealProcesoSteps();
+                        console.log('🔥 Sección procesos visible, activando animaciones');
+                        // No desconectar el observer para que funcione al volver a la sección
+                    }
+                });
+            }, {
+                threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+                rootMargin: '-50px 0px -50px 0px' // Margen para activar antes
+            });
+            
+            observer.observe(procesoSection);
+        }
     }
     
     // Optimizar con requestAnimationFrame para mejor performance
@@ -138,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(() => {
                 handleNavbarScroll();
                 animateOnScroll();
-                revealProcesoSteps(); // Agregar animaciones de procesos
+                revealProcesoSteps(); // Mantener para scroll manual
                 ticking = false;
             });
             ticking = true;
@@ -726,7 +761,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ================================================
-    // EVENTOS Y INICIALIZACIÓN
+    // EVENTOS Y INICIALIZACIÓN - CORREGIDO
     // ================================================
     
     // Event listeners
@@ -740,7 +775,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ejecutar al cargar
     handleNavbarScroll();
     animateOnScroll();
-    revealProcesoSteps(); // Ejecutar reveal de procesos al cargar
+
+    // ✅ INICIALIZACIÓN CORREGIDA DE PROCESOS
+    // Mostrar procesos inmediatamente cuando carga la página
+    setTimeout(() => {
+        showProcesoStepsImmediately();
+    }, 500);
+
+    // Inicializar observer para animaciones al hacer scroll
+    initProcesoObserver();
 
     // Inicializar componentes
     initializeLogo();
@@ -766,7 +809,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎨 Casa Taller Cachagua - Sistema inicializado correctamente');
     console.log('%c🖼️ Logo del navbar mejorado', 'color: #4567B7; font-size: 14px; font-weight: bold;');
     console.log('%c📱 Optimizaciones móvil activadas', 'color: #8BC34A; font-size: 12px;');
-    console.log('%c🔥 Sección Procesos inicializada correctamente', 'color: #7A288A; font-size: 12px; font-weight: bold;');
+    console.log('%c🔥 Sección Procesos CORREGIDA - Visible por defecto', 'color: #7A288A; font-size: 12px; font-weight: bold;');
     
     // Mostrar información del logo en desarrollo
     if (window.location.hostname === 'localhost') {
@@ -780,9 +823,10 @@ document.addEventListener('DOMContentLoaded', function() {
             console.groupEnd();
         }
         
-        console.group('🔥 Información de Procesos');
+        console.group('🔥 Información de Procesos - CORREGIDO');
         console.log('Pasos detectados:', document.querySelectorAll('.proceso-step').length);
-        console.log('Animaciones de scroll:', 'Activadas');
+        console.log('Visibilidad por defecto:', 'ACTIVADA ✅');
+        console.log('Animaciones de scroll:', 'Activadas como extra');
         console.log('CTA de contacto:', document.querySelector('#procesos .btn[href="#contacto"]') ? 'Configurado' : 'No encontrado');
         console.groupEnd();
     }
@@ -807,14 +851,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const steps = document.querySelectorAll('.proceso-step');
             steps.forEach((step, index) => {
                 step.classList.remove('revealed');
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(50px)';
                 setTimeout(() => {
                     step.classList.add('revealed');
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0)';
                 }, index * 200);
             });
             console.log('🔥 Animaciones de procesos ejecutadas');
         };
         
+        // Función para forzar visibilidad de procesos
+        window.forceShowProcesos = function() {
+            showProcesoStepsImmediately();
+            console.log('🔥 Procesos forzados a mostrarse');
+        };
+        
         console.log('%cPara ajustar el logo usa: adjustLogoSize("small/medium/large/extra-large")', 'color: #7A288A; font-style: italic;');
         console.log('%cPara probar animaciones usa: testProcesoAnimations()', 'color: #7A288A; font-style: italic;');
+        console.log('%cPara forzar procesos usa: forceShowProcesos()', 'color: #7A288A; font-style: italic;');
     }
 });
